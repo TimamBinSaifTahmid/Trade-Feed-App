@@ -4,7 +4,7 @@
 	<title>Trade Feed</title>
 	<link rel="stylesheet" href="style_uta.css">
 	<link rel="stylesheet" href="style_login.css">
-	
+	<link rel="stylesheet" href="style_add_service.css">
 </head>
 <body>
 <div class="container-nav">
@@ -23,33 +23,25 @@
 	</div>
 </div>
 
-<div class="account-page">
-	<div class="container-account">
+
+	<div class="container-info">
 		
 			<div class="form-container">
-				<div class="form-btn">
-							<span onclick="login()" id="loginpage">Login</span>
-							<span onclick="register()" id="regpage">Signup</span>
-							<hr id="indicatior">
+				<div>
+					<span id="header"><h1>Service Details</h1></h1></span>
 				</div>
 						
-				<form id="LoginForm">
-							<input type="text" placeholder="Email Address">
-							<input type="password" placeholder="Password">
-							<button type="submit" class="btn">Login</button>
-				</form>
-						
-				<form id="RegForm">
-							<input type="text" placeholder="Email Address">
-							<input type="text" placeholder="Name">
-							<input type="text" placeholder="Address">
-							<input type="text" placeholder="Contact Number">
-							<input type="password" placeholder="Password">
-							<button type="submit" class="btn">Signup</button>
+				<form id="Service-Form">
+                            <input type="text" placeholder="Service name">
+							<input type="text" placeholder="Wage">
+							<input type="text" placeholder="Skill">
+                            <input type="text" placeholder="Experience">
+                            <input type="text" placeholder="Additional informations">
+							<button type="submit" class="addbtn">Add</button>
 				</form>
 			</div>
 	</div>
-</div>
+
 
 
 

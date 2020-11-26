@@ -1,9 +1,13 @@
-.account-page{
+
+/*.account-page{
 	padding: 50px 0;
-	
+	background-color: rgb(164, 201, 226);
+}*/
+.container-account{
+		/*background-color: rgb(207, 240, 230);*/
 }
 .form-container{
-	background: #fff;
+	background-color: #9df2ef;
 	width: 300px;
 	height: 400px;
 	position: relative;
