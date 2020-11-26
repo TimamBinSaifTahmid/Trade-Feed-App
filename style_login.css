@@ -37,7 +37,7 @@ form input{
 	margin-right: 20px;
 	margin-bottom: 10px;
 	padding: 10px;
-	/*border: 1px solid #ccc;*/
+	border: 1px solid #ccc;
 }
 form .btn{
 	width: 50%;
@@ -60,9 +60,9 @@ form .btn:focus{
 #indicator{
 	width: 50px;
 	border: none;
-	/*color: brown;*/
+	background: brown;
 	height: 3px;
 	margin-top: 8px;
-	transform: translateX(50px);
+	transform: translateX(-70px);
 	transition: transform 1s;
 }
