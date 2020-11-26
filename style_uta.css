@@ -1,0 +1,35 @@
+.container-nav{
+	background-color: #6DD5FA;	
+}
+.navbar{
+	display: flex;
+	align-items: center;
+
+}
+nav{
+	flex: 1;
+	text-align: right;
+}
+nav ul{
+	display: inline-block;
+	list-style-type: none;
+}
+nav ul li{
+	display: inline-block;
+	margin-right: 10px
+}
+a{
+	text-decoration: none;
+	color : #555;
+}
+.container2{
+	height: 200px;
+	background-color: #90d0f5;
+	align-items: center;
+}
+.big_note{
+	text-align: center;
+	font-size: 36px;
+	vertical-align: center;
+}
+
