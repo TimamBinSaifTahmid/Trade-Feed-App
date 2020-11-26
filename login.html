@@ -25,33 +25,28 @@
 
 <div class="äccount-page">
 	<div class="container-account">
-		<div class="row">
-			
-			<div class="col-2">
-					<div class="form-container">
-						<div class="form-btn">
-							<span onclick="login()">Login</span>
-							<span onclick="register()">Signup</span>
+		
+			<div class="form-container">
+				<div class="form-btn">
+							<span onclick="login()" id="loginpage">Login</span>
+							<span onclick="register()" id="regpage">Signup</span>
 							<hr id="indicatior">
-						</div>
+				</div>
 						
-						<form id="LoginForm">
+				<form id="LoginForm">
 							<input type="text" placeholder="Email Address">
 							<input type="password" placeholder="Password">
-							<button type=""submit" class="btn">Login</button>
-						</form>
+							<button type="submit" class="btn">Login</button>
+				</form>
 						
-						<form id="RegForm">
+				<form id="RegForm">
 							<input type="text" placeholder="Email Address">
 							<input type="text" placeholder="Name">
 							<input type="text" placeholder="Address">
 							<input type="password" placeholder="Password">
-							<button type=""submit" class="btn">Signup </button>
-						</form>
-					</div>
+							<button type="submit" class="btn">Signup</button>
+				</form>
 			</div>
-			
-		</div>
 	</div>
 </div>
 
@@ -79,12 +74,12 @@
 			function register(){
 				RegForm.style.transform= "translateX(0px)";
 				LoginForm.style.transform= "translateX(0px)";
-				indicatior.style.transform= "translateX(100px)";
+				indicatior.style.transform= "translateX(70px)";
 			}
 			function login(){
 				RegForm.style.transform= "translateX(300px)";
 				LoginForm.style.transform= "translateX(300px)";
-				indicatior.style.transform= "translateX(0px)";
+				indicatior.style.transform= "translateX(-70px)";
 			}
 </script>
 

@@ -1,6 +1,6 @@
 .account-page{
 	padding: 50px 0;
-	background-color: #90d0f5;
+	
 }
 .form-container{
 	background: #fff;
@@ -16,26 +16,36 @@
 }
 .form-btn{
 	display: inline-block;
+	font-size: medium;
+}
+#loginpage{
+	margin-right: 20px;
+}
+#regpage{
+	margin-left: 20px;
 }
 .form-container form{
 	max-width: 300px;
-	padding: 0 20px;
+	padding:20px;
 	position: absolute;
 	top: 130px;
 	transition: transform 1s;
 }
 form input{
-	width: 100%;
+	width: 270px;
 	height: 30px;
-	margin: 10px;
+	margin-right: 20px;
+	margin-bottom: 10px;
 	padding: 10px;
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;*/
 }
 form .btn{
-	width: 100%;
+	width: 50%;
 	border: none;
 	cursor: pointer;
-	margin: 10px 0;
+	margin-right: 20px;
+	background-color: aqua;
+	font-size: medium;
 }
 form .btn:focus{
 	outline: none;
@@ -48,11 +58,11 @@ form .btn:focus{
 	left: 0;
 }
 #indicator{
-	width: 100px;
+	width: 50px;
 	border: none;
-	background: #ff523b;
+	/*color: brown;*/
 	height: 3px;
 	margin-top: 8px;
-	transform: translateX(100px);
+	transform: translateX(50px);
 	transition: transform 1s;
 }
