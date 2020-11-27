@@ -17,29 +17,45 @@
     padding-top: 20px;
     padding-left: 200px;
 }
+
+
+.work-container{
+    margin: 70px 0px;
+}
+.row-2{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-5{
+    flex-basis: 20%;
+    min-width: 250px;
+    padding-top: 20px;
+    padding-left: .5px;
+}
+.col-5 img{
+    width: 55%;
+    max-width: 100%;
+    padding-bottom: 20px;
+    
+    
+}
 .small-header{
     background-color: rgb(13, 13, 110);
     color: rgb(255, 255, 255);
     display: inline-block;
     align-items: center;
     text-align: center;
-    width: 220px;
+    width: 100%;
+    
 }
 .small-description{
     background-color: rgb(83, 134, 211);
     color: rgb(0, 0, 0);
     text-align: left;
-    width: 220px;
-    margin-top: 0px;
+    width: 100%;
+    
 }
-.row2{
-    display: flex;
-    /*align-items: center;*/
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.col-3{
-    flex-basis: 50%;
-    min-width: 100px;
-    padding-top: 20px;
-}
+
+
