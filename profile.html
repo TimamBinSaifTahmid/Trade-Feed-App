@@ -1,0 +1,88 @@
+<! DOCTYPE html>
+<html>
+<head>
+    <title>Trade Feed</title>
+    <link rel="stylesheet" href="style_profile.css">
+	<link rel="stylesheet" href="style_uta.css">
+	<link rel="stylesheet" href="style_login.css">
+	<link rel="stylesheet" href="style_add_service.css">
+</head>
+<body>
+<div class="container-nav">
+	<div class="navbar">
+		<div class="logo">
+			<h1>Trade Feed</h1>
+		</div>
+		<nav>
+			<ul>
+			<li><a herf="www.google.com">Switch To Selling</a></li>
+			<li><a herf=""><img src="search.png" width="50px"></a></li>
+			<li><a herf=""><img src="notification.png" width="50px"></a></li>
+			<li><a herf=""><img src="profile.png" width="50px"></a></li>
+			<ul>
+		</nav>
+	</div>
+</div>
+
+
+	<div class="fullpage-container">
+		
+			<div class="profile-container">
+				<div class="row">
+                    <div class="col-1">
+                        <h1>Jisan Anam</h1>
+                        <p>
+                            Location : 249 West Nakhalpara, Dhaka<br>
+                            Email : jisan.birianam@gmail.com<br>
+                            Phone no : 01215467461<br>
+                        </p>
+                    </div>
+                    <div class="col-2">
+                            <img src="" width="40%">
+                    </div>
+					
+				</div>
+						
+				<div class="row-2">
+                    
+                </div>
+			</div>
+	</div>
+
+
+
+
+<script>
+	var MenuItems = document.getElementById("MenuItems");
+	MenuItems.style.maxHeight = "0px";
+	function menutoggle(){
+		if(MenuItems.style.maxHeight= "0px")
+		{
+			MenuItems.style.maxHeight="200px";
+		}
+		else
+		{
+			MenuItems.style.maxHeight="0px";
+		}
+	}
+</script>
+
+<script>
+	var LoginForm= document.getElementById("LoginForm");
+	var RegForm= document.getElementById("RegForm");
+	var indicator= document.getElementById("indicatior");
+			function register(){
+				RegForm.style.transform= "translateX(0px)";
+				LoginForm.style.transform= "translateX(0px)";
+				indicatior.style.transform= "translateX(70px)";
+			}
+			function login(){
+				RegForm.style.transform= "translateX(300px)";
+				LoginForm.style.transform= "translateX(300px)";
+				indicatior.style.transform= "translateX(-70px)";
+			}
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+.row{
+    
+}
+.col-1{
+   
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+    width: 50%;
+}
+.col-2{
+    width: 50%;
+}
