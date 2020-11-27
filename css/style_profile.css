@@ -17,3 +17,29 @@
     padding-top: 20px;
     padding-left: 200px;
 }
+.small-header{
+    background-color: rgb(13, 13, 110);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+    width: 220px;
+}
+.small-description{
+    background-color: rgb(83, 134, 211);
+    color: rgb(0, 0, 0);
+    text-align: left;
+    width: 220px;
+    margin-top: 0px;
+}
+.row2{
+    display: flex;
+    /*align-items: center;*/
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.col-3{
+    flex-basis: 50%;
+    min-width: 100px;
+    padding-top: 20px;
+}
