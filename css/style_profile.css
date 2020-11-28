@@ -15,11 +15,16 @@
     font-size: 22px;
     
 }
+.col-2 h1{
+    margin-bottom: 40px;
+}
 .col-2 img{
     max-width: 100%;
-    width: 50%;
+    width: 47%;
     padding-top: 20px;
     padding-left: 200px;
+    padding-bottom: 70px;
+    
 }
 
 

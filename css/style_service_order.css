@@ -1,0 +1,14 @@
+.contact-btn{
+    background-color: navy;
+    color: white;
+    width: fit-content;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 22px;
+    margin-top: 30px;
+    margin-left: 65%;
+}
+.contact-btn span{
+    
+    text-align: right;
+}
