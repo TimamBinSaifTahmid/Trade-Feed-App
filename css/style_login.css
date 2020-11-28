@@ -1,9 +1,10 @@
 
-/*.account-page{
-	padding: 50px 0;
-	background-color: rgb(164, 201, 226);
-}*/
+.account-page{
+	padding: 200px 500px;
+	/*background-color: rgb(164, 201, 226);*/
+}
 .container-account{
+	
 		/*background-color: rgb(207, 240, 230);*/
 }
 .form-container{
@@ -13,8 +14,7 @@
 	position: relative;
 	text-align: center;
 	padding: 20px 0;
-	margin: auto;
-	margin-top: 20px;
+	
 	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
 	overflow: hidden;
 }
