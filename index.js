@@ -79,3 +79,11 @@ ref1.once("value")
 
   
 }
+
+function signout(){
+  
+  const signoutV=firebase.auth().signOut();
+  if(signoutV){
+    window.location.href="login.html";
+  }
+}
