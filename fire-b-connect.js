@@ -10,4 +10,4 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  window.alert("working");
+ // window.alert("working");

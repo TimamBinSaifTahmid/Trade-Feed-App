@@ -65,6 +65,16 @@
         </div>
 
     </div>
+    <script>
+        firebase.auth.onAuthStateChanged(function(user)
+        {
+            if(user)
+            {
+                window.location.href="HomePage.html";
+            }
+    
+        });
+    </script>
 
 </body>
 </html>

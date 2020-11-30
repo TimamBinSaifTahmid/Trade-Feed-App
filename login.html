@@ -8,10 +8,11 @@
 	<link rel="stylesheet" href="css/HomaPage2Style.css">
 	<link rel="stylesheet" href="css/style_uta.css">
 	<link rel="stylesheet" href="css/style_login.css">
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-	<script src="index.js"></script>
+	<script src="/__/firebase/8.1.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+	
 	
 </head>
 <body>
@@ -45,7 +46,7 @@
 				<form id="LoginForm">
 							<input type="text" placeholder="Email Address" id="Email">
 							<input type="password" placeholder="Password" id="password">
-							<button type="submit" class="btn" onclick="login1()">Login</button>
+							<button type="submit" class="btn" id="loginb1">Login</button>
 				</form>
 						
 				<form id="RegForm">
@@ -92,15 +93,17 @@
 				indicatior.style.transform= "translateX(-70px)";
 			}
 </script>
-<!-- The core Firebase JS SDK is always required and must be listed first -->
 
+	 <script src="index.js"></script>
+<script>
+	firebase.auth.onAuthStateChanged(function(user)
+	{
+		if(user)
+		{
+			window.location.href="HomePage.html";
+		}
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-
-
-
-
-
+	});
+</script>
 </body>
 </html>
