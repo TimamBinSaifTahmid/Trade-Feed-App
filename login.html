@@ -8,12 +8,10 @@
 	<link rel="stylesheet" href="css/HomaPage2Style.css">
 	<link rel="stylesheet" href="css/style_uta.css">
 	<link rel="stylesheet" href="css/style_login.css">
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-	<script src="/__/firebase/8.1.1/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+
 	
-	
+
+
 </head>
 <body>
 
@@ -43,10 +41,10 @@
 							<hr id="indicatior">
 				</div>
 						
-				<form id="LoginForm">
+				<form id="LoginForm" name="LoginForm" onsubmit="event.preventDefault(); login1();">
 							<input type="text" placeholder="Email Address" id="Email">
 							<input type="password" placeholder="Password" id="password">
-							<button type="submit" class="btn" id="loginb1">Login</button>
+							<button type="submit" class="btn" >Login</button>
 				</form>
 						
 				<form id="RegForm">
@@ -64,18 +62,18 @@
 
 
 <script>
-	var MenuItems = document.getElementById("MenuItems");
-	MenuItems.style.maxHeight = "0px";
-	function menutoggle(){
-		if(MenuItems.style.maxHeight= "0px")
-		{
-			MenuItems.style.maxHeight="200px";
-		}
-		else
-		{
-			MenuItems.style.maxHeight="0px";
-		}
-	}
+	// var MenuItems = document.getElementById("MenuItems");
+	// MenuItems.style.maxHeight = "0px";
+	// function menutoggle(){
+	// 	if(MenuItems.style.maxHeight= "0px")
+	// 	{
+	// 		MenuItems.style.maxHeight="200px";
+	// 	}
+	// 	else
+	// 	{
+	// 		MenuItems.style.maxHeight="0px";
+	// 	}
+	// }
 </script>
 
 <script>
@@ -93,17 +91,16 @@
 				indicatior.style.transform= "translateX(-70px)";
 			}
 </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
 
-	 <script src="index.js"></script>
-<script>
-	firebase.auth.onAuthStateChanged(function(user)
-	{
-		if(user)
-		{
-			window.location.href="HomePage.html";
-		}
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="index.js"></script>
 
-	});
-</script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
 </body>
 </html>
