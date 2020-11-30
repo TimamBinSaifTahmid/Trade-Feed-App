@@ -1,3 +1,6 @@
+.container-info{
+    padding: 15% 35%;
+}
 #header{
     color: rgb(9, 1, 44);
 }
@@ -6,8 +9,9 @@
 	border: none;
 	cursor: pointer;
 	margin-right: 20px;
-    background-color: #F2F6FF;
+    background-color: #160ca0;
     color: rgb(247, 247, 247);
     font-size: 20px;
     align-items: center;
+    border-radius: 15px;
 }
