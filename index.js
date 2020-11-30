@@ -40,3 +40,20 @@ function login1(){
    
     
 }
+function fn3(){
+  var emailAddress= document.getElementById("emailAddress").value;
+  var name= document.getElementById("name").value;
+  var address= document.getElementById("address").value;
+  var contactNo= document.getElementById("contactNo").value;
+  var password1= document.getElementById("password1").value;
+  //window.alert(emailAddress);
+  firebase.database().ref('User/1').set({
+       EmailAddress:emailAddress,
+       Name:name,
+       Address:address,
+       ContactNo:contactNo,
+       Password:password1
+       
+  });
+
+}

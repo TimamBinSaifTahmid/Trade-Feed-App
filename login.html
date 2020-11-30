@@ -47,12 +47,12 @@
 							<button type="submit" class="btn" >Login</button>
 				</form>
 						
-				<form id="RegForm">
-							<input type="text" placeholder="Email Address">
-							<input type="text" placeholder="Name" id="namefield">
-							<input type="text" placeholder="Address" id="addressfield">
-							<input type="text" placeholder="Contact Number">
-							<input type="password" placeholder="Password">
+				<form id="RegForm" onsubmit="event.preventDefault(); fn3();">
+							<input type="text" placeholder="Email Address" id="emailAddress">
+							<input type="text" placeholder="Name" id="name">
+							<input type="text" placeholder="Address" id="address">
+							<input type="text" placeholder="Contact Number" id="contactNo">
+							<input type="password" placeholder="Password" id="password1">
 							<button type="submit" class="btn" onclick="writedata()">Signup</button>
 				</form>
 			</div>
@@ -95,7 +95,10 @@
 
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 <script src="index.js"></script>
 
 
