@@ -84,6 +84,7 @@ function signout(){
   
   const signoutV=firebase.auth().signOut();
   if(signoutV){
+    window.alert("work");
     window.location.href="login.html";
   }
 }
