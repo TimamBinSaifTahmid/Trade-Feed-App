@@ -41,19 +41,40 @@ function login1(){
     
 }
 function fn3(){
+  var count;
   var emailAddress= document.getElementById("emailAddress").value;
   var name= document.getElementById("name").value;
   var address= document.getElementById("address").value;
   var contactNo= document.getElementById("contactNo").value;
   var password1= document.getElementById("password1").value;
   //window.alert(emailAddress);
-  firebase.database().ref('User/1').set({
-       EmailAddress:emailAddress,
-       Name:name,
-       Address:address,
-       ContactNo:contactNo,
-       Password:password1
-       
+  var ref1 = firebase.database().ref('User');
+ref1.once("value")
+  .then(function(snapshot) {
+    count=snapshot.numChildren()+1;
+    firebase.database().ref('User/'+count).set({
+      EmailAddress:emailAddress,
+      Name:name,
+      Address:address,
+      ContactNo:contactNo,
+      Password:password1
+      
+ });
+ firebase.auth().createUserWithEmailAndPassword(emailAddress, password1)
+ .then((user) => {
+   window.alert(emailAddress);
+   console.log(user)
+ })
+ .catch((error) => {
+   var errorCode = error.code;
+   var errorMessage = error.message;
+   // ..
+   window.alert("asds")
+   console.log(error)
+ });
+    console.log(snapshot.numChildren()); 
   });
 
+
+  
 }
