@@ -2,6 +2,9 @@
 <html>
 <head>
 	<title>Trade Feed</title>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="fire-b-connect.js"></script>
+
 	<link rel="stylesheet" href="css/HomaPage2Style.css">
 	<link rel="stylesheet" href="css/style_uta.css">
 	<link rel="stylesheet" href="css/style_login.css">
@@ -12,6 +15,9 @@
 	
 </head>
 <body>
+
+
+
 <div class="navbar">
 	<a href="HomaPage.html"><h2>TRADE FEED</h2></a>
       <nav>
@@ -44,11 +50,11 @@
 						
 				<form id="RegForm">
 							<input type="text" placeholder="Email Address">
-							<input type="text" placeholder="Name">
-							<input type="text" placeholder="Address">
+							<input type="text" placeholder="Name" id="namefield">
+							<input type="text" placeholder="Address" id="addressfield">
 							<input type="text" placeholder="Contact Number">
 							<input type="password" placeholder="Password">
-							<button type="submit" class="btn">Signup</button>
+							<button type="submit" class="btn" onclick="writedata()">Signup</button>
 				</form>
 			</div>
 	</div>
