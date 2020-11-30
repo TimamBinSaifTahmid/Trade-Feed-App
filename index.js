@@ -18,7 +18,7 @@
       console.log(user)
       if(user)
       {
-        window.location.href="HomePage.html";
+        //window.location.href="HomePage.html";
       }
     }
   )
@@ -29,6 +29,7 @@ function login1(){
     /*window.alert(userEmail+userPassword);*/
     firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
     .then((user) => {
+      window.location.href="HomePage.html";
       console.log(user)
     })
     .catch((error) => {
