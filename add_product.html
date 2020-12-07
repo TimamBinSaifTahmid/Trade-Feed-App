@@ -31,9 +31,9 @@
 					<span id="header"><h1>Product Details</h1></h1></span>
 				</div>
 						
-				<form id="Service-Form">
+				<form id="Service-Form" onsubmit="event.preventDefault(); addProduct();">
 					<label for="Product_name">Product name</label><br>
-					<select id="Service_name">
+					<select id="Service_name" onchange="decript();">
 						<option value="Product_name">Select Product name</option>
 						<option value="Rice">Rice</option>
 						<option value="Apple">Apple</option>
@@ -46,9 +46,9 @@
 						<option value="Egg">Egg</option>
 						
 					</select>
-							<input type="text" placeholder="Amount">
-							<input type="text" placeholder="Price">
-                            <input type="text" placeholder="Additional informations">
+							<input type="text" placeholder="Amount" id="Amount">
+							<input type="text" placeholder="Price" id="Price">
+                            <input type="text" placeholder="Additional informations" id="AddInfo">
 							<button type="submit" class="addbtn">Add</button>
 				</form>
 			</div>
@@ -87,7 +87,13 @@
 				indicatior.style.transform= "translateX(-70px)";
 			}
 </script>
-
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+<script src="addProduct.js"></script>
 
 </body>
 </html>
