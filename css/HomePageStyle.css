@@ -16,6 +16,10 @@
     color: lavender;
     font-size: 30px;
 }
+.navbar h2{
+color: white;
+background-color: white;
+}
 nav{
     flex: 1;
     text-align: right;
