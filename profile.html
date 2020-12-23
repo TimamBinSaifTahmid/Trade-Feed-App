@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="css/style_login.css">
 	<link rel="stylesheet" href="css/style_add_service.css">
 	<link rel="stylesheet" href="css/HomaPage2Style.css">
+	
+
 </head>
 <body>
 	<div class="navbar">
@@ -30,11 +32,11 @@
 			<div class="profile-container">
 				<div class="row">
                     <div class="col-2">
-                        <h1>Jisan Anam</h1>
+                        <h1 id="username"></h1>
                         <p>
-                           <span>Location : 249 West Nakhalpara, Dhaka</span><br>
-                            Email : jisan.birianam@gmail.com<br>
-                            Phone no : 01215467461
+                           Name: <span id="useraddress"></span><br>
+                           Email: <span id="useremail"></span><br>
+                           ContactNo: <span id="usercontactno"></span>
                         </p>
                     </div>
                     <div class="col-2">
@@ -126,8 +128,13 @@
 			</div>
 	</div>
 
-
-
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+	<script src="profile.js"></script>
 
 <script>
 	var MenuItems = document.getElementById("MenuItems");

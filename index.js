@@ -39,19 +39,20 @@ function login1(){
             for( var i=1;i<=count;i++){
               var v_email=snapshot.child(i).val().EMAIL;
               if(v_email==userEmail){
-              document.getElementById('Email').value=snapshot.child(i).val().value;
+              var userid=snapshot.child(i).val().value;
+                localStorage.setItem("u_id",userid);
               }
             }
             
            
-            console.log("count")
-            var user1 = snapshot.val('/1').value;
+           // console.log("count")
+           // var user1 = snapshot.val('/1').value;
             //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
-            window.alert(user1);
+           // window.alert(user1);
          //console.log(snapshot.numChildren());
-        // window.location.href="HomePage.html";*/
+         //window.location.href="HomePage.html";
           });
-     // window.location.href="HomePage.html";
+      window.location.href="HomePage.html";
       console.log(user)
     })
     .catch((error) => {
