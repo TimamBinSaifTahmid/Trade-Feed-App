@@ -27,10 +27,31 @@ function login1(){
     var userEmail= document.getElementById("Email").value;
     var userPassword= document.getElementById("password").value;
     /*window.alert(userEmail+userPassword);*/
+    
     firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
     .then((user) => {
-        var ref2=firebase.database.ref('User_Email_Id')
-      window.location.href="HomePage.html";
+        //var ref2=firebase.database.ref('User_Email_Id')
+        var refuser = firebase.database().ref('User_Email_Id/');
+        refuser.on('value',function(snapshot)
+          {
+            var count=snapshot.numChildren();
+            window.alert(count);
+            for( var i=1;i<=count;i++){
+              var v_email=snapshot.child(i).val().EMAIL;
+              if(v_email==userEmail){
+              document.getElementById('Email').value=snapshot.child(i).val().value;
+              }
+            }
+            
+           
+            console.log("count")
+            var user1 = snapshot.val('/1').value;
+            //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+            window.alert(user1);
+         //console.log(snapshot.numChildren());
+        // window.location.href="HomePage.html";*/
+          });
+     // window.location.href="HomePage.html";
       console.log(user)
     })
     .catch((error) => {
@@ -41,6 +62,8 @@ function login1(){
     });
    
     
+
+
 }
 function fn3(){
   var count;
