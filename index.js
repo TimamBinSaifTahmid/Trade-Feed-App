@@ -29,6 +29,7 @@ function login1(){
     /*window.alert(userEmail+userPassword);*/
     firebase.auth().signInWithEmailAndPassword(userEmail, userPassword)
     .then((user) => {
+        var ref2=firebase.database.ref('User_Email_Id')
       window.location.href="HomePage.html";
       console.log(user)
     })
@@ -74,6 +75,13 @@ ref1.once("value")
    console.log(error)
  });
     console.log(snapshot.numChildren()); 
+
+    firebase.database().ref('User_Email_Id/'+count+'/').set({
+      EMAIL:emailAddress,
+      value:count
+            
+ });
+ //console.log(snapshot.numChildren());
   });
 
 

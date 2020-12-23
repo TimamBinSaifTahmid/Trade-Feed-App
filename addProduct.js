@@ -29,6 +29,7 @@ function addProduct(){
       ProductName:d.value,  
       Amount:Amount,
       Price:Price,
+      sold:0,
       Additional_Info:AddInfo
       
  });
