@@ -30,11 +30,11 @@
 			<div class="profile-container">
 				<div class="row">
                     <div class="col-2">
-                        <h1>Abdur Rahim</h1>
+                        <h1 id="username"></h1>
                         <p>
-                            Location : <span>249 West Tejgong, Dhaka</span><br>
+                            Location : <span id="useraddress"></span><br>
                             <br>
-                            Email : <span>abdur@gmail.com</span> <br>
+                            Email : <span id="useremail"></span> <br>
                             <br>
                             Avaiable Amount: <span>150 Liter</span><br>
                             <br>
@@ -53,11 +53,19 @@
 			</div>
 
             <div class="contact-btn">
-                <span>CONTACT</span>
+                <span id="place_order" onclick="orderProduct()">CONTACT</span>
             </div>
 			
-	</div>
+    </div>
+    
 
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+        <script src="product_order.js"></script>
 
 </body>
 </html>

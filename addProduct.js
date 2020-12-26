@@ -16,16 +16,19 @@ function decript(){
     
 }
 function addProduct(){
+  var sid=localStorage.getItem("s_id");
+  var uid=localStorage.getItem("u_id");
+
     var Amount= document.getElementById("Amount").value;
     var Price= document.getElementById("Price").value;
     //var userPassword= document.getElementById("Price").value;
     var AddInfo= document.getElementById("AddInfo").value;
     window.alert(Amount+Price+AddInfo);
-    var ref1 = firebase.database().ref('UserProduct');
+    var ref1 = firebase.database().ref('UserProduct/'+uid);
     ref1.once("value")
   .then(function(snapshot) {
     count=snapshot.numChildren()+1;
-    firebase.database().ref('UserProduct/'+count).set({
+    firebase.database().ref('UserProduct/'+uid+'/'+count).set({
       ProductName:d.value,  
       Amount:Amount,
       Price:Price,

@@ -17,7 +17,7 @@ window.onload=function(){
 
 function getprofile(){
     var uid=localStorage.getItem("u_id");
-      window.alert(uid);
+    //  window.alert(uid);
     var firepro = firebase.database().ref('User/');
     
     
