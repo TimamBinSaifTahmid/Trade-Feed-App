@@ -36,15 +36,16 @@ var firebaseConfig = {
 function orderProduct(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
-
-    var reforder=firebase.database().ref('PendingOrder');
+    var cnt;
+    cnt=parseInt(sid)+parseInt(uid);
+    var reforder=firebase.database().ref('PendingOrder/'+cnt);
     reforder.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
-var cnt=parseInt(count);
-cnt=cnt+parseInt(sid)+parseInt(uid);
+ //cnt=parseInt(count);
+
 window.alert(count);
-firebase.database().ref('PendingOrder/'+cnt).set({
+firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
   OrderID : cnt,
   Approval : "false",
   UserProductId : "aaa",
@@ -55,4 +56,24 @@ firebase.database().ref('PendingOrder/'+cnt).set({
 });
 
 });
+
+var refpolist=firebase.database().ref('PendingOrderList');
+    refpolist.once("value")
+.then(function(snapshot) {
+var count=snapshot.numChildren()+1;
+
+firebase.database().ref('PendingOrderList/'+count).set(
+ cnt
+   
+);
+
+});
+}
+
+
+function showpopup(){
+document.querySelector(".popup").style.display="flex";
+}
+function closepopup(){
+  document.querySelector(".popup").style.display="none";
   }

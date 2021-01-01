@@ -12,3 +12,24 @@
     
     text-align: right;
 }
+.btn{
+	width: 50%;
+	border: none;
+	cursor: pointer;
+	margin-right: 20px;
+	background-color: rgb(28, 202, 202);
+	font-size: medium;
+	border-radius: 30px;
+}
+
+.popup{
+    margin-top: 30px;
+    margin-left: 70%;
+    background-color: rgb(208, 240, 240);
+    height: 150px;
+    width: 300px;
+    display: none;
+}
+.popup_container{
+    padding: 10%;
+}
