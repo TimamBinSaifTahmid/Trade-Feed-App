@@ -15,6 +15,17 @@ var firebaseConfig = {
    seller_profile();
 }
 
+
+function showpopup(){
+  document.querySelector(".popup").style.display="flex";
+  }
+  function closepopup(){
+    document.querySelector(".popup").style.display="none";
+    }
+
+
+
+
   function seller_profile(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
@@ -34,6 +45,8 @@ var firebaseConfig = {
     }
 
 function orderProduct(){
+    var amount=document.getElementById("amount").value;
+    
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var cnt;
@@ -51,8 +64,8 @@ firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
   UserProductId : "aaa",
  SellerID: sid,
  BuyerID : uid,
- Distance : "100 m"
-
+ Distance : "100 m",
+  Amount : amount
 });
 
 });
@@ -71,9 +84,3 @@ firebase.database().ref('PendingOrderList/'+count).set(
 }
 
 
-function showpopup(){
-document.querySelector(".popup").style.display="flex";
-}
-function closepopup(){
-  document.querySelector(".popup").style.display="none";
-  }
