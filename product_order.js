@@ -46,7 +46,9 @@ function showpopup(){
 
 function orderProduct(){
     var amount=document.getElementById("amount").value;
-    
+    var productid=localStorage.getItem("product_id");
+   window.alert(productid);
+
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var cnt;
@@ -61,7 +63,7 @@ window.alert(count);
 firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
   OrderID : cnt,
   Approval : "false",
-  UserProductId : "aaa",
+  UserProductId : productid,
  SellerID: sid,
  BuyerID : uid,
  Distance : "100 m",
@@ -81,6 +83,21 @@ firebase.database().ref('PendingOrderList/'+count).set(
 );
 
 });
+
+
+var firesellerOrder=firebase.database().ref('SellerOrder/'+sid);
+firesellerOrder.once("value")
+.then(function(snapshot) {
+var vcount=snapshot.numChildren()+1;
+ 
+
+window.alert(vcount);
+firebase.database().ref('SellerOrder/'+sid+'/'+vcount).set(
+  cnt
+);
+
+});
+
 }
 
 

@@ -35,12 +35,17 @@ function login1(){
         refuser.on('value',function(snapshot)
           {
             var count=snapshot.numChildren();
-            window.alert(count);
+           // window.alert(count);
             for( var i=1;i<=count;i++){
               var v_email=snapshot.child(i).val().EMAIL;
               if(v_email==userEmail){
               var userid=snapshot.child(i).val().value;
+               // window.alert(v_email);
+                localStorage.removeItem("u_id");
+               // window.alert(userid);
                 localStorage.setItem("u_id",userid);
+                window.location.href="HomePage.html";
+                break;
               }
             }
             
@@ -52,7 +57,7 @@ function login1(){
          //console.log(snapshot.numChildren());
          //window.location.href="HomePage.html";
           });
-      window.location.href="HomePage.html";
+      
       console.log(user)
     })
     .catch((error) => {

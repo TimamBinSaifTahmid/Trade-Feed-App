@@ -15,6 +15,32 @@ function decript(){
      d=document.getElementById("Service_name");
     
 }
+
+function productSellerlist(){
+  var flag=false;
+  var uid=localStorage.getItem("u_id");
+var refpolist=firebase.database().ref('ProductSellerlist');
+    refpolist.once("value")
+.then(function(snapshot) {
+var count=snapshot.numChildren()+1;
+for(i=1;i<count;i++){
+  var s_id=snapshot.Child(i).value;
+  if(s_id==uid){
+      flag=true;
+      break;
+  }
+}
+if(flag==false){
+  
+firebase.database().ref('ProductSellerlist/'+count).set(
+ uid
+   
+);
+}
+});
+}
+
+
 function addProduct(){
   var sid=localStorage.getItem("s_id");
   var uid=localStorage.getItem("u_id");
