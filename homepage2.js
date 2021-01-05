@@ -22,6 +22,7 @@ function productRequest(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var order_id= new Array();
+    var order_tracker=new Array(100).fill(0);
     var b_id;
     var cnt;
     //window.alert(uid);
@@ -30,32 +31,57 @@ function productRequest(){
       {
           cnt=snapshot.numChildren();
           //window.alert(cnt);
+          
           for(i=1;i<=cnt;i++){
-            //order_id[i]=snapshot.child('2').val().i;
-            order_id[i]=snapshot.child(i).val();
-            //window.alert(order_id[i]);
+            const j=i;
+            //window.alert(j);
+            //order_id[j]=snapshot.child('2').val().j;
+            order_id[j]=snapshot.child(j).val();
+            const tc= ++order_tracker[order_id[j]];
+           // window.alert(order_tracker[order_id[j]]);
             var amount,productid,buyerid,p_name;
-            var sellerproductRequest=firebase.database().ref('PendingOrder/'+order_id[i]);
+            var sellerproductRequest=firebase.database().ref('PendingOrder/'+order_id[j]);
             sellerproductRequest.on('value',function(snapshot)
            {
                v_cnt=snapshot.numChildren();
                //window.alert(v_cnt);
-              amount= snapshot.child(v_cnt).val().Amount;
-              productid= snapshot.child(v_cnt).val().UserProductId;
-              buyerid= snapshot.child(v_cnt).val().BuyerID;
-             // window.alert(amount);
-              window.alert(productid);
+              amount= snapshot.child(tc).val().Amount;
+              const amnt=amount;
+              productid= snapshot.child(tc).val().UserProductId;
+              const p_id=productid;
+              buyerid= snapshot.child(tc).val().BuyerID;
+              const bid=buyerid;
+              window.alert(amount);
+              //window.alert(productid);
              // window.alert(buyerid);
+             
+             
               var productName=firebase.database().ref('Product/');
                         productName.on('value',function(snapshot)
                              {
                
-                                p_name=snapshot.child(productid).val();
-                                window.alert(p_name);
-                                document.getElementById(i+"name").innerHTML=p_name;
-                                document.getElementById(i+"amount").innerHTML=amount;
-                                document.getElementById(i+"buyer").innerHTML=buyerid;
+                                p_name=snapshot.child(p_id).val();
+                                //window.alert(p_name);
+                                var str1=j+'name';
+                                var str2=j+'amount';
+                                //var str3=j+'buyer';
+                                //window.alert(j);
+                                document.getElementById(str1).innerHTML=p_name;
+                                document.getElementById(str2).innerHTML=amnt;
+                                //document.getElementById(str3).innerHTML=bid;
                             });
+
+              var productName=firebase.database().ref('User/');
+                    productName.on('value',function(snapshot)
+                           {
+                   
+                             B_name=snapshot.child(bid).val().Name;
+                                    
+                                   
+                                    var str3=j+'buyer';
+
+                                    document.getElementById(str3).innerHTML=B_name;
+                          });
 
                
            });
