@@ -220,3 +220,44 @@ margin-left: 20px;
 .MyProfileButton .Button:hover{
     background: dodgerblue;
 }
+
+.popup{
+    margin-top: 30px;
+    margin-left: 35%;
+    background-color: rgb(208, 240, 240);
+    height: 100px;
+    width: 300px;
+    display: none;
+}
+.popup_container{
+    padding: 10%;
+}
+
+.starouter{
+    position: relative;
+    display: inline-block;
+}
+.starinner{
+    position: absolute;
+    top : 0;
+    left : 0;
+    overflow: hidden;
+    width : 0;
+}
+/*.starouter::before{
+    
+    
+    font-weight: 900;
+    color: cornsilk;
+    
+}
+.starinner::before{
+    
+    
+    font-weight: 900;
+    color: chocolate;
+}*/
+/*.fas fa-star::before{
+    font-weight: 900;
+    color: chocolate;
+}*/

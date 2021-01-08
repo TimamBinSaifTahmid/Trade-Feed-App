@@ -14,9 +14,18 @@ var firebaseConfig = {
   window.onload=function(){
     productRequest();
  }
+ function showpopup(){
+  document.querySelector(".popup").style.display="flex";
+  }
+  function closepopup(){
+    document.querySelector(".popup").style.display="none";
+    }
 
 
 
+var cnt;
+var buyerid_list=new Array(100).fill(0);
+var temp=0;
 function productRequest(){
     window.alert("dhukse");
     var sid=localStorage.getItem("s_id");
@@ -24,7 +33,7 @@ function productRequest(){
     var order_id= new Array();
     var order_tracker=new Array(100).fill(0);
     var b_id;
-    var cnt;
+    //var cnt;
     //window.alert(uid);
     var fireProductRequestBuyerName = firebase.database().ref('SellerOrder/'+uid);
     fireProductRequestBuyerName.on('value',function(snapshot)
@@ -51,6 +60,7 @@ function productRequest(){
               const p_id=productid;
               buyerid= snapshot.child(tc).val().BuyerID;
               const bid=buyerid;
+              buyerid_list[++temp]=bid;
               window.alert(amount);
               //window.alert(productid);
              // window.alert(buyerid);
@@ -97,4 +107,43 @@ function productRequest(){
           document.getElementById('username').innerHTML=snapshot.child(b_id).val().Name;
           
       });
+    }
+
+
+    const totalStar=5;
+   
+    function getRating(){
+       var ratingControl=document.getElementById('rating-control').value;
+     // window.alert(ratingControl);
+      return ratingControl;
+    }
+
+    var btn_no;
+    function doneDeal(btn_id){
+      
+     // window.alert("duk");
+        for(i=1;i<=cnt;i++){
+          var str=i+'btn';
+          if(btn_id==str){
+            btn_no=i;
+            break;
+          }
+        }
+    }
+
+    function rate(){
+      var uid=localStorage.getItem("u_id");
+      var rate=getRating();
+      window.alert(rate);
+      var odrid=parseInt(uid)+parseInt(buyerid_list[btn_no]);
+      var ref1 = firebase.database().ref('DoneOrder');
+    ref1.once("value")
+    .then(function(snapshot) {
+    var cnt2=snapshot.numChildren()+1;
+  firebase.database().ref('DoneOrder/'+cnt2).set({
+  orderID : odrid,
+  BuyerRating : rate,
+  SellerRating : 0
+});
+});
     }

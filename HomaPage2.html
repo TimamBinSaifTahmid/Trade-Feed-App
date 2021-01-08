@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="css/HomaPage2Style.css">
+    <link rel="stylesheet" href="css/all.css">
 </head>
 <body>
     <div class="navbar">
@@ -88,9 +89,36 @@
             
         </div>
         <div class="row2">
-            <a href="" class="AcceptButton1">SELL</a>
-            <a href="" class="AcceptButton2">SELL</a>
-            <a href="" class="AcceptButton3">SELL</a>
+            <p id="1btn" class="AcceptButton1" onclick="doneDeal('1btn'); showpopup()">DONE</p>
+            <p id="2btn" class="AcceptButton2" onclick="showpopup()">DONE</p>
+            <p id="3btn" class="AcceptButton3" onclick="doneDeal('3btn'); showpopup();">DONE</p>
+        </div>
+    </div>
+    <div class="popup">
+        <div class="popup_container">
+            <div>
+                <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate buyer" >
+            </div>
+            <div class="starouter">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <div class="starinner">
+
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <span id="number_rating">
+
+            </span>
+            <br>
+            <button class="btn" onclick="rate(); closepopup()">Rate</button>
         </div>
     </div>
     <div class="MyProfileButton">
