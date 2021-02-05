@@ -57,13 +57,41 @@
             <a href="" class="ProductButton5" id="205" onclick="getProductid(205)"></a>
         </div>
         <div class="row2">
-            <a href="" class="ProductButton6" id="206" onclick="getProductid()"></a>
+            <a onclick="getProductid()" href="" class="ProductButton6" id="206"></a>
             <a href="" class="ProductButton7" id="207" onclick="getProductid()"></a>
             <a href="" class="ProductButton8" id="208" onclick="getProductid()"></a>
             <a href="" class="ProductButton9" id="209" onclick="getProductid()"></a>
             <a href="" class="ProductButton10" id="210" onclick="getProductid()"></a>
         </div>
 
+    </div>
+
+    <div class="popup">
+        <div class="popup_container">
+            <div>
+                <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate Seller" >
+            </div>
+            <div class="starouter">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <div class="starinner">
+
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <span id="number_rating">
+
+            </span>
+            <br>
+            <button class="btn" onclick="rate(); closepopup()">Rate</button>
+        </div>
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>

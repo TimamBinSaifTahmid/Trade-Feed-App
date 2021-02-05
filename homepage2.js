@@ -129,6 +129,19 @@ function productRequest(){
             break;
           }
         }
+
+        var userid=localStorage.getItem("u_id");
+        var oderid=parseInt(userid)+parseInt(buyerid_list[btn_no]);
+        var refpendingrate = firebase.database().ref('PendingSellerRating/'+buyerid_list[btn_no]);
+        refpendingrate.once("value")
+        .then(function(snapshot) {
+        var cnt2=snapshot.numChildren()+1;
+      firebase.database().ref('PendingSellerRating/'+buyerid_list[btn_no]+'/'+cnt2).set({
+      orderID : oderid,
+      Status : 0,
+      SellerID : userid
+    });
+    });
     }
 
     function rate(){

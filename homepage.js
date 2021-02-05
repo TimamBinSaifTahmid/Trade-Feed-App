@@ -12,7 +12,9 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   window.onload=function(){
+    rateSeller();
     retriveProduct();
+    
  }
 
   function retriveProduct(){
@@ -38,3 +40,109 @@ var firebaseConfig = {
     
     //return id;
   }
+
+  function showpopup(){
+    document.querySelector(".popup").style.display="flex";
+    }
+    function closepopup(){
+      document.querySelector(".popup").style.display="none";
+      }
+  
+  
+
+
+  const totalStar=5;
+   
+    function getRating(){
+       var ratingControl=document.getElementById('rating-control').value;
+      return ratingControl;
+    }
+
+
+    function rate(){
+      var bid=localStorage.getItem("Buyer_id");
+      var o_id=localStorage.getItem("Order_id");
+      var oid;
+      var rate=getRating();
+     // window.alert(rate);
+     var ref2 = firebase.database().ref('DoneOrder');
+     ref2.on('value',function(snapshot){
+        var childcount=snapshot.numChildren();
+        for(var i=1;i<=childcount;i++){
+        oid= snapshot.child(i).val().orderID;
+        sRate=snapshot.child(i).val().SellerRating;
+
+        if(o_id==oid && sRate==0){
+          
+     
+      firebase.database().ref('DoneOrder/'+i+'SellerRating').set(
+      
+       rate
+  );
+    
+         }
+        }
+     });
+      
+     
+
+
+var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);
+    refbuyerrating.once("value")
+    .then(function(snapshot) {
+   var buyerchild=snapshot.numChildren();
+   
+   window.alert(buyerchild);
+   if(buyerchild==0){
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
+      Rate : rate
+    });
+   }
+   else{
+     var buyerrate=snapshot.val().Rate;
+     window.alert(buyerrate);
+    buyerrate=(buyerrate+rate)/2;
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
+    }
+   
+  
+});
+    }
+
+
+
+function rateSeller(){
+  window.alert("aage");
+  var userid=localStorage.getItem("u_id");
+  var firesellerRate = firebase.database().ref('PendingSellerRating/'+userid+'/');
+    
+    
+  firesellerRate.on('value',function(snapshot)
+    {
+      var childCnt=snapshot.numChildren();
+      for(var i=1;i<=childCnt;i++){
+        window.alert("dhuk");
+        var stat = snapshot.child(i).val().Status;
+        var sellerid=snapshot.child(i).val().SellerID;
+        var odrid = snapshot.child(i).val().orderID;
+        if(stat==0){
+          localStorage.removeItem("Buyer_id");
+          localStorage.setItem("Buyer_id",userid);
+          localStorage.removeItem("Seller_id");
+          localStorage.setItem("Seller_id",sellerid);
+          localStorage.removeItem("Order_id");
+          localStorage.setItem("Order_id",odrid);
+          
+          showpopup();
+          
+          break;
+        }
+      }
+      
+      
+        
+    
+        
+    });
+
+}
