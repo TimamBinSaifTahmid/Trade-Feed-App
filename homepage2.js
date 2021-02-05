@@ -153,11 +153,40 @@ function productRequest(){
     ref1.once("value")
     .then(function(snapshot) {
     var cnt2=snapshot.numChildren()+1;
-  firebase.database().ref('DoneOrder/'+cnt2).set({
-  orderID : odrid,
-  BuyerRating : rate,
-  SellerRating : 0
-});
+    if(cnt2==1){
+      firebase.database().ref('DoneOrder/'+cnt2).set({
+        orderID : odrid,
+        BuyerRating : rate,
+        SellerRating : 0
+      });
+    }
+    else{
+    for(var i=1;i<=cnt2-1;i++){
+      var oid=snapshot.child(i).val().orderID;
+      if(oid==odrid){
+        
+        var b_rate=snapshot.child(i).val().BuyerRating;
+        window.alert(b_rate);
+        var avg_rate= (parseFloat(b_rate)+parseFloat(rate))/2;
+        window.alert(avg_rate);
+        firebase.database().ref('DoneOrder/'+i).set({
+          orderID : odrid,
+          BuyerRating : avg_rate,
+          SellerRating : 0
+        });
+
+      }
+      else if(i==cnt2-1 && oid!=odrid){
+        
+        firebase.database().ref('DoneOrder/'+i).set({
+          orderID : odrid,
+          BuyerRating : rate,
+          SellerRating : 0
+        });
+      }
+    }
+  }
+  
 });
 
 var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);

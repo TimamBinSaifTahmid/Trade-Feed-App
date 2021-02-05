@@ -51,64 +51,7 @@ var firebaseConfig = {
   
 
 
-  const totalStar=5;
-   
-    function getRating(){
-       var ratingControl=document.getElementById('rating-control').value;
-      return ratingControl;
-    }
-
-
-    function rate(){
-      var bid=localStorage.getItem("Buyer_id");
-      var o_id=localStorage.getItem("Order_id");
-      var oid;
-      var rate=getRating();
-     // window.alert(rate);
-     var ref2 = firebase.database().ref('DoneOrder');
-     ref2.on('value',function(snapshot){
-        var childcount=snapshot.numChildren();
-        for(var i=1;i<=childcount;i++){
-        oid= snapshot.child(i).val().orderID;
-        sRate=snapshot.child(i).val().SellerRating;
-
-        if(o_id==oid && sRate==0){
-          
-     
-      firebase.database().ref('DoneOrder/'+i+'SellerRating').set(
-      
-       rate
-  );
-    
-         }
-        }
-     });
-      
-     
-
-
-var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);
-    refbuyerrating.once("value")
-    .then(function(snapshot) {
-   var buyerchild=snapshot.numChildren();
-   
-   window.alert(buyerchild);
-   if(buyerchild==0){
-    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
-      Rate : rate
-    });
-   }
-   else{
-     var buyerrate=snapshot.val().Rate;
-     window.alert(buyerrate);
-    buyerrate=(buyerrate+rate)/2;
-    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
-    }
-   
   
-});
-    }
-
 
 
 function rateSeller(){
@@ -146,3 +89,87 @@ function rateSeller(){
     });
 
 }
+
+
+
+
+
+
+
+
+
+
+const totalStar=5;
+   
+    function getRating(){
+       var ratingControl=document.getElementById('rating-control').value;
+      return ratingControl;
+    }
+
+
+    function rate(){
+      var bid=localStorage.getItem("Buyer_id");
+      var o_id=localStorage.getItem("Order_id");
+      var oid;
+      var sRate;
+      var bRate;
+      const rate=getRating();
+     // window.alert(rate);
+     var ref2 = firebase.database().ref('DoneOrder');
+     ref2.on('value',function(snapshot){
+        var childcount=snapshot.numChildren();
+        for(var i=1;i<=childcount;i++){
+          const j=i;
+         oid= snapshot.child(j).val().orderID;
+        sRate=snapshot.child(j).val().SellerRating;
+        bRate=snapshot.child(j).val().BuyerRating;
+          const avg1_rate= (parseFloat(sRate)+parseFloat(rate))/2;
+        if(o_id==oid && sRate==0){
+          
+          window.alert("rated if");
+      firebase.database().ref('DoneOrder/'+j+'/'+'SellerRating').set(
+      
+       rate
+  );
+  
+         }
+         else if(o_id==oid && sRate>0){
+          //var s_rate = snapshot.child(j).val().SellerRating;
+          
+          window.alert(avg1_rate);
+          window.alert("rated else if");
+         // snapshot.child(j).child('SellerRating').set(avg1_rate);
+      firebase.database().ref('DoneOrder/'+j+'/').set({
+        orderID : oid,
+        BuyerRating : bRate,
+        SellerRating : avg1_rate
+      });
+        
+         }
+        }
+     });
+      
+     
+
+
+var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);
+    refbuyerrating.once("value")
+    .then(function(snapshot) {
+   var buyerchild=snapshot.numChildren();
+   
+   window.alert(buyerchild);
+   if(buyerchild==0){
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
+      Rate : rate
+    });
+   }
+   else{
+     var buyerrate=snapshot.val().Rate;
+     window.alert(buyerrate);
+    buyerrate=(buyerrate+rate)/2;
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
+    }
+   
+  
+});
+    }
