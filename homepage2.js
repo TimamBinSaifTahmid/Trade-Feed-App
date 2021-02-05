@@ -134,7 +134,7 @@ function productRequest(){
     function rate(){
       var uid=localStorage.getItem("u_id");
       var rate=getRating();
-      window.alert(rate);
+     // window.alert(rate);
       var odrid=parseInt(uid)+parseInt(buyerid_list[btn_no]);
       var ref1 = firebase.database().ref('DoneOrder');
     ref1.once("value")
@@ -145,5 +145,26 @@ function productRequest(){
   BuyerRating : rate,
   SellerRating : 0
 });
+});
+
+var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);
+    refbuyerrating.once("value")
+    .then(function(snapshot) {
+   var buyerchild=snapshot.numChildren();
+   
+   window.alert(buyerchild);
+   if(buyerchild==0){
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
+      Rate : rate
+    });
+   }
+   else{
+     var buyerrate=snapshot.val().Rate;
+     window.alert(buyerrate);
+    buyerrate=(buyerrate+rate)/2;
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
+    }
+   
+  
 });
     }
