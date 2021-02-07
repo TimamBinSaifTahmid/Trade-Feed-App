@@ -12,6 +12,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 window.onload=function(){
     getprofile();
+    productinfo();
 }
 
 
@@ -39,4 +40,37 @@ function getprofile(){
     // window.location.href="HomePage.html";
       });
       
+}
+
+
+function productinfo(){
+  var userid=localStorage.getItem("u_id");
+  
+  var addproductinfo= firebase.database().ref('UserProduct/'+userid);
+  addproductinfo.on('value',function(snapshot)
+      {
+        var childencnt=snapshot.numChildren();
+        if(childencnt>=2){
+        for(var i=childencnt,j=1;i>childencnt-2;i--,j++){
+          
+          var p_name=snapshot.child(i).val().ProductName;
+          var amount=snapshot.child(i).val().Amount;
+          var price=snapshot.child(i).val().Price;
+          var sold=snapshot.child(i).val().sold;
+          
+          var str1=j+'product_name';
+          var str2=j+'Amount';
+          var str3=j+'price';
+          var str4=j+'sold';
+          var str5=j+'rate';
+          
+          document.getElementById(str1).innerHTML=p_name;
+          document.getElementById(str2).innerHTML=amount;
+          document.getElementById(str3).innerHTML=price;
+          document.getElementById(str4).innerHTML=sold;
+          document.getElementById(str5).innerHTML="0";
+          
+        }
+      }
+      });
 }

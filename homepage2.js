@@ -111,7 +111,7 @@ function productRequest(){
                 var ratting= snapshot.child(i).val().BuyerRating;
                 
                 var str4=j+'rate';
-                document.getElementById(str4).innerHTML="Rating :"+ratting;
+                document.getElementById(str4).innerHTML="Rating :"+ratting+" /5";
                }
              }
               
