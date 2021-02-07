@@ -74,10 +74,11 @@ function productRequest(){
                                 //window.alert(p_name);
                                 var str1=j+'name';
                                 var str2=j+'amount';
+                                
                                 //var str3=j+'buyer';
                                 //window.alert(j);
                                 document.getElementById(str1).innerHTML=p_name;
-                                document.getElementById(str2).innerHTML=amnt;
+                                document.getElementById(str2).innerHTML="Amount :"+amnt;
                                 //document.getElementById(str3).innerHTML=bid;
                             });
 
@@ -90,10 +91,30 @@ function productRequest(){
                                    
                                     var str3=j+'buyer';
 
-                                    document.getElementById(str3).innerHTML=B_name;
+                                    document.getElementById(str3).innerHTML="Buyer :"+B_name;
                           });
 
                
+           });
+           window.alert(order_id[j]);
+           var setBuyerRating=firebase.database().ref('DoneOrder/');
+           setBuyerRating.on('value',function(snapshot)
+           {
+             var childencnt=snapshot.numChildren();
+             
+             for(var i=1;i<=childencnt;i++){
+              
+               var oderid=snapshot.child(i).val().orderID;
+
+               if(oderid==order_id[j]){
+                window.alert("for e dhukse");
+                var ratting= snapshot.child(i).val().BuyerRating;
+                
+                var str4=j+'rate';
+                document.getElementById(str4).innerHTML="Rating :"+ratting;
+               }
+             }
+              
            });
           }
           

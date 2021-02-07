@@ -106,40 +106,40 @@ const totalStar=5;
       return ratingControl;
     }
 
-
+    
     function rate(){
       var bid=localStorage.getItem("Buyer_id");
       var o_id=localStorage.getItem("Order_id");
-      var oid;
-      var sRate;
-      var bRate;
+      
       const rate=getRating();
      // window.alert(rate);
      var ref2 = firebase.database().ref('DoneOrder');
      ref2.on('value',function(snapshot){
         var childcount=snapshot.numChildren();
         for(var i=1;i<=childcount;i++){
+          window.alert(childcount);
           const j=i;
-         oid= snapshot.child(j).val().orderID;
-        sRate=snapshot.child(j).val().SellerRating;
-        bRate=snapshot.child(j).val().BuyerRating;
+        const oid= snapshot.child(j).val().orderID;
+        const sRate=snapshot.child(j).val().SellerRating;
+        const bRate=snapshot.child(j).val().BuyerRating;
           const avg1_rate= (parseFloat(sRate)+parseFloat(rate))/2;
         if(o_id==oid && sRate==0){
           
           window.alert("rated if");
-      firebase.database().ref('DoneOrder/'+j+'/'+'SellerRating').set(
-      
-       rate
-  );
+      firebase.database().ref('DoneOrder/'+j).set({
+        orderID : oid,
+        BuyerRating : bRate,
+        SellerRating : rate
+      });
   
          }
-         else if(o_id==oid && sRate>0){
+         else if(o_id==oid && sRate!=0){
           //var s_rate = snapshot.child(j).val().SellerRating;
           
           window.alert(avg1_rate);
           window.alert("rated else if");
          // snapshot.child(j).child('SellerRating').set(avg1_rate);
-      firebase.database().ref('DoneOrder/'+j+'/').set({
+      firebase.database().ref('DoneOrder/'+j).set({
         orderID : oid,
         BuyerRating : bRate,
         SellerRating : avg1_rate
