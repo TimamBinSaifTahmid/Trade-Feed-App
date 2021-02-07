@@ -12,6 +12,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 window.onload=function(){
     getprofile();
+    serviceinfo();
     productinfo();
 }
 
@@ -41,6 +42,40 @@ function getprofile(){
       });
       
 }
+
+
+function serviceinfo(){
+  var usrid=localStorage.getItem("u_id");
+  
+  var addserviceinfo= firebase.database().ref('UserService/'+usrid);
+  addserviceinfo.on('value',function(snapshot)
+      {
+        var childencnt=snapshot.numChildren();
+        if(childencnt>=2){
+        for(var i=childencnt,j=1;i>childencnt-2;i--,j++){
+          
+          var s_name=snapshot.child(i).val().ServiceName;
+          var wage=snapshot.child(i).val().Wage;
+          var skill=snapshot.child(i).val().Skill;
+          var experience=snapshot.child(i).val().Experience;
+          
+          var str1=j+'Service_name';
+          var str2=j+'wage';
+          var str3=j+'skill';
+          var str4=j+'experience';
+          var str5=j+'rate';
+          
+          document.getElementById(str1).innerHTML=s_name;
+          document.getElementById(str2).innerHTML=wage;
+          document.getElementById(str3).innerHTML=skill;
+          document.getElementById(str4).innerHTML=experience;
+          document.getElementById(str5).innerHTML="0";
+          
+        }
+      }
+      });
+}
+
 
 
 function productinfo(){
@@ -74,3 +109,4 @@ function productinfo(){
       }
       });
 }
+

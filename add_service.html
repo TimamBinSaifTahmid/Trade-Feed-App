@@ -29,10 +29,10 @@
 					<span id="header"><h1>Service Details</h1></h1></span>
 				</div>
 						
-				<form id="Service-Form">
+				<form id="Service-Form" onsubmit="event.preventDefault(); serviceProviderlist(); addService();">
 							
 							<label for="Service_name">Service name</label><br>
-								<select id="Service_name">
+								<select id="sname" onchange="decript();">
 									<option value="Service_name">Select Service name</option>
 									<option value="Electritian">Electritian</option>
 									<option value="Household">Household</option>
@@ -45,10 +45,10 @@
 									<option value="Community Service">Community Service</option>
 									<option value="Sanitry">Sanitary</option>
 								</select>
-							<input type="text" placeholder="Wage">
-							<input type="text" placeholder="Skill">
-                            <input type="text" placeholder="Experience">
-                            <input type="text" placeholder="Additional informations">
+							<input type="text" placeholder="Wage" id="wage">
+							<input type="text" placeholder="Skill" id="skill">
+                            <input type="text" placeholder="Experience" id="experience">
+                            <input type="text" placeholder="Additional informations" id="AddInfo">
 							<button type="submit" class="addbtn">Add</button>
 				</form>
 			</div>
@@ -88,6 +88,13 @@
 			}
 </script>
 
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+<script src="addService.js"></script>
 
 </body>
 </html>
