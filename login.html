@@ -50,7 +50,21 @@
 				<form id="RegForm" onsubmit="event.preventDefault(); fn3();">
 							<input type="text" placeholder="Email Address" id="emailAddress">
 							<input type="text" placeholder="Name" id="name">
-							<input type="text" placeholder="Address" id="address">
+							
+							<label for="Address">Address</label><br>
+							<select id="address" onchange="decript();">
+								<option value="Select Address">Select Address</option>
+								<option value="Farmgate">Farmgate</option>
+								<option value="Mohammadpur">Mohammadpur</option>
+								<option value="Dhanmondi">Dhanmondi</option>
+								<option value="Gulshan">Gulshan</option>
+								<option value="Uttora">Uttora</option>
+								<option value="Bonani">Bonani</option>
+								<option value="Motijhil">Motijhil</option>
+								<option value="Mirpur">Mirpur</option>
+								<option value="Kamalapur">Kamalapur</option>
+								<option value="Kamalapur">KawranBazar</option>
+							</select>
 							<input type="text" placeholder="Contact Number" id="contactNo">
 							<input type="password" placeholder="Password" id="password1">
 							<button type="submit" class="btn" onclick="writedata()">Signup</button>

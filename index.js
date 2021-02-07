@@ -22,6 +22,15 @@
       }
     }
   )
+
+
+  var d;
+  function decript(){
+    d=document.getElementById("address");
+   
+  }
+
+
 function login1(){
   // window.alert("asd")
     var userEmail= document.getElementById("Email").value;
@@ -75,7 +84,7 @@ function fn3(){
   var count;
   var emailAddress= document.getElementById("emailAddress").value;
   var name= document.getElementById("name").value;
-  var address= document.getElementById("address").value;
+  //var address= document.getElementById("address").value;
   var contactNo= document.getElementById("contactNo").value;
   var password1= document.getElementById("password1").value;
   //window.alert(emailAddress);
@@ -83,10 +92,11 @@ function fn3(){
 ref1.once("value")
   .then(function(snapshot) {
     count=snapshot.numChildren()+1;
+    
     firebase.database().ref('User/'+count).set({
       EmailAddress:emailAddress,
       Name:name,
-      Address:address,
+      Address:d.value,
       ContactNo:contactNo,
       Password:password1
       
@@ -125,3 +135,8 @@ function signout(){
     window.location.href="login.html";
   }
 }
+
+
+
+
+
