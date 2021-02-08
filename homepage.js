@@ -149,28 +149,45 @@ const totalStar=5;
          }
         }
      });
+     var userid=localStorage.getItem("u_id");
+     var refsellerrating = firebase.database().ref('PendingSellerRating/'+userid);
+     refsellerrating.once("value")
+     .then(function(snapshot) {
+        for(var w=1;w<=snapshot.numChildren();w++){
+          var sell_id=snapshot.child(w).val().SellerID;
+       
+
+     var refsellerrating = firebase.database().ref('Seller_rating/'+sell_id);
+     refsellerrating.once("value")
+     .then(function(snapshot) {
+    var buyerchild=snapshot.numChildren();
+    
+    if(buyerchild==0){
+     firebase.database().ref('Seller_rating/'+sell_id).set({
+       Rate : rate,
+       Count : 1
+     });
+    }
+    else{
+      var sellerrate=snapshot.val().Rate;
+      var ratecount=snapshot.val().Count;
       
-     
-
-
-var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]);
-    refbuyerrating.once("value")
-    .then(function(snapshot) {
-   var buyerchild=snapshot.numChildren();
+    
+    window.alert(rate);
+    sellerrate=((parseFloat(ratecount)*parseFloat(sellerrate))+parseFloat(rate))/(parseFloat(ratecount)+1);
+     ratecount++;
+     window.alert(sellerrate);
+     firebase.database().ref('Seller_rating/'+sell_id).set({
+       Rate : sellerrate,
+       Count : ratecount
+     });
+     }
+    
    
-   window.alert(buyerchild);
-   if(buyerchild==0){
-    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
-      Rate : rate
-    });
-   }
-   else{
-     var buyerrate=snapshot.val().Rate;
-     window.alert(buyerrate);
-    buyerrate=(buyerrate+rate)/2;
-    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
-    }
-   
-  
+ });
+    
+}
+
 });
-    }
+
+}

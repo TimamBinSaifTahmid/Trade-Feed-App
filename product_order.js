@@ -37,13 +37,13 @@ function showpopup(){
     var rating;
     var firepro1 = firebase.database().ref('User/');
     var firepro2 = firebase.database().ref('UserProduct/'+sid);
-    
+    var firepro3=firebase.database().ref('Buyer_rating/');
     var firepro4 = firebase.database().ref('Product/');
     
     firepro1.on('value',function(snapshot)
       {
         firepro2.on('value',function(snapshot2){
-          
+          firepro2.on('value',function(snapshot3){
             firepro4.on('value',function(snapshot4){
             var childcnt= snapshot2.numChildren();
             for(var i=1;i<=childcnt;i++){
@@ -58,11 +58,12 @@ function showpopup(){
                     document.getElementById('amount').innerHTML=snapshot2.child(i).val().Amount;
                     document.getElementById('price').innerHTML=snapshot2.child(i).val().Price;
                    document.getElementById('sold').innerHTML=snapshot2.child(i).val().sold;
-                   
+                   document.getElementById('rating').innerHTML=snapshot2.child(sid).val().Rate;
+
               }
             }
           });
-          
+        });
         });
         
           
