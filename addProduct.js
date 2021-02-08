@@ -23,9 +23,13 @@ var refpolist=firebase.database().ref('ProductSellerlist');
     refpolist.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
-for(i=1;i<count;i++){
-  var s_id=snapshot.Child(i).value;
+
+for(var i=1;i<count;i++){
+  window.alert("for dhuse");
+  var s_id=snapshot.child(i).val();
+  window.alert(s_id);
   if(s_id==uid){
+    window.alert("if dhukse");
       flag=true;
       break;
   }
@@ -49,7 +53,7 @@ function addProduct(){
     var Price= document.getElementById("Price").value;
     //var userPassword= document.getElementById("Price").value;
     var AddInfo= document.getElementById("AddInfo").value;
-    window.alert(Amount+Price+AddInfo);
+    window.alert("OK");
     var ref1 = firebase.database().ref('UserProduct/'+uid);
     ref1.once("value")
   .then(function(snapshot) {

@@ -54,10 +54,28 @@
 			</div>
 
             <div class="contact-btn">
-                <span>CONTACT</span>
+                <span id="place_order" onclick="showpopup()">CONTACT</span>
+            </div>
+            <div class="popup">
+                <div class="popup_container">
+                    <input type="text" placeholder="Enter Amount" id="amount"></input>
+                    <p><br></p>
+                    <p>Contact no:<span>01712136546</span></p>
+                    <p><br></p>
+                    <button class="btn" onclick="orderService(); closepopup();">Confirm</button>
+                </div>
             </div>
 			
+			
 	</div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+        <script src="service_order.js"></script>
 
 
 </body>

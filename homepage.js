@@ -36,6 +36,7 @@ var firebaseConfig = {
 
   function getProductid(id){
     //window.alert(id);
+    localStorage.removeItem("product_id");
     localStorage.setItem("product_id",id);
     
     //return id;

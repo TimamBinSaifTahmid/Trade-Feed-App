@@ -231,3 +231,5 @@ var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no
   
 });
     }
+    
+    

@@ -29,16 +29,11 @@ function showpopup(){
   function seller_profile(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
-    var productid=localStorage.getItem("product_id");
-    var amount;
-    var price;
-    var sold;
-    var rating;
-    var firepro1 = firebase.database().ref('User/');
-    var firepro2 = firebase.database().ref('UserProduct/'+sid);
 
+    var firepro = firebase.database().ref('User/');
     
-    firepro1.on('value',function(snapshot)
+    
+    firepro.on('value',function(snapshot)
       {
         
         
@@ -47,47 +42,32 @@ function showpopup(){
           document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
           
       });
-      firepro2.on('value',function(snapshot)
-      {
-        
-         var childcnt= snapshot.numChildren();
-         for(var i=1;i<=childcnt;i++){
-           var pdtid=snapshot.child(i).val().ProductName;
-           if(productid==pdtid){
-          document.getElementById('amount').innerHTML=snapshot.child(i).val().Amount;
-          document.getElementById('price').innerHTML=snapshot.child(i).val().Price;
-          document.getElementById('sold').innerHTML=snapshot.child(i).val().sold;
-           }
-         }
-          
-      });
     }
 
-function orderProduct(){
+function orderService(){
     var amount=document.getElementById("amount").value;
-    var productid=localStorage.getItem("product_id");
+    var serviceid=localStorage.getItem("service_id");
    window.alert(productid);
 
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
-    
     var cnt;
     cnt=parseInt(sid)+parseInt(uid);
-    var reforder=firebase.database().ref('PendingOrder/'+cnt);
+    var reforder=firebase.database().ref('PendingService/'+cnt);
     reforder.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
  //cnt=parseInt(count);
 
 window.alert(count);
-firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
+firebase.database().ref('PendingService/'+cnt+'/'+count).set({
   OrderID : cnt,
   Approval : "false",
-  UserProductId : productid,
+  UserServiceId : serviceid,
  SellerID: sid,
  BuyerID : uid,
  Distance : "100 m",
-  Amount : amount
+ 
 });
 
 });
