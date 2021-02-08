@@ -30,38 +30,45 @@ function showpopup(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var productid=localStorage.getItem("product_id");
+    var oid=parseInt(sid)+parseInt(uid);
     var amount;
     var price;
     var sold;
     var rating;
     var firepro1 = firebase.database().ref('User/');
     var firepro2 = firebase.database().ref('UserProduct/'+sid);
-
+    
+    var firepro4 = firebase.database().ref('Product/');
     
     firepro1.on('value',function(snapshot)
       {
-        
-        
-          document.getElementById('username').innerHTML=snapshot.child(sid).val().Name;
-          document.getElementById('useraddress').innerHTML=snapshot.child(sid).val().Address;
-          document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
+        firepro2.on('value',function(snapshot2){
           
-      });
-      firepro2.on('value',function(snapshot)
-      {
-        
-         var childcnt= snapshot.numChildren();
-         for(var i=1;i<=childcnt;i++){
-           var pdtid=snapshot.child(i).val().ProductName;
-           if(productid==pdtid){
-          document.getElementById('amount').innerHTML=snapshot.child(i).val().Amount;
-          document.getElementById('price').innerHTML=snapshot.child(i).val().Price;
-          document.getElementById('sold').innerHTML=snapshot.child(i).val().sold;
-           }
-         }
+            firepro4.on('value',function(snapshot4){
+            var childcnt= snapshot2.numChildren();
+            for(var i=1;i<=childcnt;i++){
+              
+              var pdtid=snapshot2.child(i).val().ProductName;
+              var pdtname=snapshot4.child(productid).val();
+              if(pdtname==pdtid){
+                    window.alert("2nd ifor");
+                    document.getElementById('username').innerHTML=snapshot.child(sid).val().Name;
+                    document.getElementById('useraddress').innerHTML=snapshot.child(sid).val().Address;
+                    document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
+                    document.getElementById('amount').innerHTML=snapshot2.child(i).val().Amount;
+                    document.getElementById('price').innerHTML=snapshot2.child(i).val().Price;
+                   document.getElementById('sold').innerHTML=snapshot2.child(i).val().sold;
+                   
+              }
+            }
+          });
           
-      });
-    }
+        });
+        
+          
+          
+    });
+  }
 
 function orderProduct(){
     var amount=document.getElementById("amount").value;

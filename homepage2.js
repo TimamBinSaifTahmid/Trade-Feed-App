@@ -22,7 +22,7 @@ var firebaseConfig = {
     }
 
 
-
+var btn_no;
 var cnt;
 var buyerid_list=new Array(100).fill(0);
 var temp=0;
@@ -61,7 +61,21 @@ function productRequest(){
               buyerid= snapshot.child(tc).val().BuyerID;
               const bid=buyerid;
               buyerid_list[++temp]=bid;
-              window.alert(amount);
+              const something=buyerid_list[temp];
+              var setBuyerRating=firebase.database().ref('Buyer_rating/');
+           setBuyerRating.on('value',function(snapshot)
+           {
+             
+                window.alert(something);
+                var ratting= snapshot.child(something).val().Rate;
+                
+                var str4=j+'rate';
+                document.getElementById(str4).innerHTML="Rating :"+ratting+" /5";
+               
+             
+              
+           });
+              //window.alert(buyerid_list[temp]);
               //window.alert(productid);
              // window.alert(buyerid);
              
@@ -96,26 +110,8 @@ function productRequest(){
 
                
            });
-           window.alert(order_id[j]);
-           var setBuyerRating=firebase.database().ref('DoneOrder/');
-           setBuyerRating.on('value',function(snapshot)
-           {
-             var childencnt=snapshot.numChildren();
-             
-             for(var i=1;i<=childencnt;i++){
-              
-               var oderid=snapshot.child(i).val().orderID;
-
-               if(oderid==order_id[j]){
-                window.alert("for e dhukse");
-                var ratting= snapshot.child(i).val().BuyerRating;
-                
-                var str4=j+'rate';
-                document.getElementById(str4).innerHTML="Rating :"+ratting+" /5";
-               }
-             }
-              
-           });
+          // window.alert(order_id[j]);
+           
           }
           
       });
@@ -139,7 +135,7 @@ function productRequest(){
       return ratingControl;
     }
 
-    var btn_no;
+    
     function doneDeal(btn_id){
       
      // window.alert("duk");
@@ -187,9 +183,9 @@ function productRequest(){
       if(oid==odrid){
         
         var b_rate=snapshot.child(i).val().BuyerRating;
-        window.alert(b_rate);
+       // window.alert(b_rate);
         var avg_rate= (parseFloat(b_rate)+parseFloat(rate))/2;
-        window.alert(avg_rate);
+       // window.alert(avg_rate);
         firebase.database().ref('DoneOrder/'+i).set({
           orderID : odrid,
           BuyerRating : avg_rate,
@@ -215,17 +211,26 @@ var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no
     .then(function(snapshot) {
    var buyerchild=snapshot.numChildren();
    
-   window.alert(buyerchild);
    if(buyerchild==0){
     firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
-      Rate : rate
+      Rate : rate,
+      Count : 1
     });
    }
    else{
      var buyerrate=snapshot.val().Rate;
-     window.alert(buyerrate);
-    buyerrate=(buyerrate+rate)/2;
-    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({Rate : buyerrate});
+     var ratecount=snapshot.val().Count;
+     
+   window.alert(ratecount);
+   window.alert(buyerrate);
+   window.alert(rate);
+    buyerrate=((parseFloat(ratecount)*parseFloat(buyerrate))+parseFloat(rate))/(parseFloat(ratecount)+1);
+    ratecount++;
+    window.alert(buyerrate);
+    firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
+      Rate : buyerrate,
+      Count : ratecount
+    });
     }
    
   
