@@ -1,3 +1,4 @@
+
 var firebaseConfig = {
     apiKey: "AIzaSyDoFUdL815RsJYK6aNS9tDle-RnpvHFm8k",
     authDomain: "tradefeed-d399f.firebaseapp.com",
