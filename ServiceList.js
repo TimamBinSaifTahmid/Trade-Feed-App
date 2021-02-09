@@ -14,7 +14,7 @@ var firebaseConfig = {
   var serviceProviderAddress= new Array(6).fill(0);
   var distances= new Array(6).fill(0);
   var name= new Array(6).fill(0);
-  var Wages= new Array(6).fill(0);
+  var amounts= new Array(6).fill(0);
   var prices= new Array(6).fill(0);
   var ratings= new Array(6).fill(0);
     //var order_tracker=new Array(100).fill(0);
@@ -28,12 +28,8 @@ var firebaseConfig = {
 
     var btn_id=parseInt(id);
     var sell_id=localStorage.getItem(btn_id);
-    var dstr='d'+parseInt(id);
-    var distnce=localStorage.getItem(dstr);
     localStorage.removeItem("s_id");
     localStorage.setItem("s_id",sell_id);
-    localStorage.removeItem("distance");
-    localStorage.setItem("distance",distnce);
     window.location.href="product_order.html";
   }
     /*
@@ -80,15 +76,15 @@ var firebaseConfig = {
     //window.alert(email);
     var temp=0;
     var uid=localStorage.getItem("u_id");
-    var seller_id_list=firebase.database().ref('ProductSellerlist/');
-    var retrive_seller_id = firebase.database().ref('User/');
-    var retrive_seller_information = firebase.database().ref('UserProduct/');
-    var retrive_Productname =firebase.database().ref("Product/");
-    seller_id_list.on('value',function(snapshot4){
-    retrive_seller_id.on('value',function(snapshot)
+    var provider_Id_List=firebase.database().ref('serviceProviderlist/');
+    var retrive_provider_id = firebase.database().ref('User/');
+    var retrive_provider_information = firebase.database().ref('UserService/');
+    var retrive_ServiceName =firebase.database().ref("Product/");
+    provider_Id_List.on('value',function(snapshot4){
+    retrive_provider_id.on('value',function(snapshot)
     {
-      retrive_seller_information.on('value',function(snapshot1){
-        retrive_Productname.on('value',function(snapshot2){
+      retrive_provider_information.on('value',function(snapshot1){
+        retrive_ServiceName.on('value',function(snapshot2){
         
       
          var product_Seller_Count=snapshot4.numChildren();
@@ -102,7 +98,7 @@ var firebaseConfig = {
         
         for(var i=1;i<=seller_Product_Count;i++){
           
-         retreived_Product_Name =snapshot1.child(product_seller_id).child(i).val().ProductName;
+         retreived_Product_Name =snapshot1.child(product_seller_id).child(i).val().ServiceName;
           if(retreived_Product_Name==product_Name){
 
             ++temp;
@@ -116,9 +112,9 @@ var firebaseConfig = {
              serviceReceiverAddress[1]=snapshot.child(uid).val().Address;   
              window.alert(serviceReceiverAddress[1]);   
             serviceProviderAddress[temp]=snapshot.child(product_seller_id).val().Address;
-             window.alert(serviceProviderAddress[temp]);
-             name[temp]=snapshot.child(product_seller_id).val().Name;
-             Wages[temp]=snapshot1.child(product_seller_id).child(i).val().Amount;
+            window.alert(serviceProviderAddress[temp]);
+            name[temp]=snapshot.child(product_seller_id).val().Name;
+             amounts[temp]=snapshot1.child(product_seller_id).child(i).val().Amount;
             prices[temp]=snapshot1.child(product_seller_id).child(i).val().Price;
             
             sortDistance();
@@ -166,15 +162,15 @@ function sort(){
       if(distances[j]>distances[j+1]){
         var temp=distances[j];
         var temp2=name[j];
-        var temp3=Wages[j];
+        var temp3=amounts[j];
         var temp4=prices[j];
         distances[j]=distances[j+1];
         name[j]=name[j+1];
-        Wages[j]=Wages[j+1];
+        amounts[j]=amounts[j+1];
         prices[j]=prices[j+1];
         distances[j+1]=temp;
         name[j+1]=temp2;
-        Wages[j+1]=temp3;
+        amounts[j+1]=temp3;
         prices[j+1]=temp4;
       }
     }if(i==2){
@@ -187,14 +183,10 @@ function set_val(){
   for(var i=1;i<=2;i++){
      
     document.getElementById(i+'seller_email').innerHTML=name[i];
-    document.getElementById (i+'Available_amount').innerHTML=Wages[i];
+    document.getElementById (i+'Available_amount').innerHTML=amounts[i];
     document.getElementById(i+'price').innerHTML=prices[i];
     document.getElementById(i+'distance').innerHTML=distances[i];
     document.getElementById(i+'Seller_rating').innerHTML=0;
     //window.alert(amounts[i]);
-    var dstr1='d'+i;
-    localStorage.removeItem(dstr1);
-    localStorage.setItem(dstr1,distances[i]);
-   
   }
 }

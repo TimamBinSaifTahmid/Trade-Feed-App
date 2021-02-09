@@ -29,20 +29,47 @@ function showpopup(){
   function seller_profile(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
-
-    var firepro = firebase.database().ref('User/');
+    var productid=localStorage.getItem("product_id");
+    var oid=parseInt(sid)+parseInt(uid);
+    var amount;
+    var price;
+    var sold;
+    var rating;
+    var firepro1 = firebase.database().ref('User/');
+    var firepro2 = firebase.database().ref('UserProduct/'+sid);
+    var firepro3=firebase.database().ref('Seller_rating/');
+    var firepro4 = firebase.database().ref('Product/');
     
-    
-    firepro.on('value',function(snapshot)
+    firepro1.on('value',function(snapshot)
       {
+        firepro2.on('value',function(snapshot2){
+          firepro3.on('value',function(snapshot3){
+            firepro4.on('value',function(snapshot4){
+            var childcnt= snapshot2.numChildren();
+            for(var i=1;i<=childcnt;i++){
+              
+              var pdtid=snapshot2.child(i).val().ProductName;
+              var pdtname=snapshot4.child(productid).val();
+              if(pdtname==pdtid){
+                    window.alert("2nd ifor");
+                    document.getElementById('username').innerHTML=snapshot.child(sid).val().Name;
+                    document.getElementById('useraddress').innerHTML=snapshot.child(sid).val().Address;
+                    document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
+                    document.getElementById('amount').innerHTML=snapshot2.child(i).val().Amount;
+                    document.getElementById('price').innerHTML=snapshot2.child(i).val().Price;
+                   document.getElementById('sold').innerHTML=snapshot2.child(i).val().sold;
+                   document.getElementById('rating').innerHTML=snapshot3.child(sid).val().Rate;
+
+              }
+            }
+          });
+        });
+        });
         
-        
-          document.getElementById('username').innerHTML=snapshot.child(sid).val().Name;
-          document.getElementById('useraddress').innerHTML=snapshot.child(sid).val().Address;
-          document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
           
-      });
-    }
+          
+    });
+  }
 
 function orderProduct(){
     var amount=document.getElementById("amount").value;
@@ -51,6 +78,7 @@ function orderProduct(){
 
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
+    var distnce=localStorage.getItem("distance");
     var cnt;
     cnt=parseInt(sid)+parseInt(uid);
     var reforder=firebase.database().ref('PendingOrder/'+cnt);
@@ -66,11 +94,12 @@ firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
   UserProductId : productid,
  SellerID: sid,
  BuyerID : uid,
- Distance : "100 m",
+ Distance : distnce,
   Amount : amount
 });
 
 });
+
 
 var refpolist=firebase.database().ref('PendingOrderList');
     refpolist.once("value")

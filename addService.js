@@ -23,8 +23,8 @@ var refpolist=firebase.database().ref('serviceProviderlist');
     refpolist.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
-for(i=1;i<count;i++){
-  var s_id=snapshot.Child(i).value;
+for(var i=1;i<count;i++){
+  var s_id=snapshot.child(i).val();
   if(s_id==uid){
       flag=true;
       break;
