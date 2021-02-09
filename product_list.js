@@ -10,11 +10,11 @@ var firebaseConfig = {
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  var buyerAddress= new Array(2).fill(0);
-  var sellerAddress= new Array(6).fill(0);
+  var serviceReceiverAddress= new Array(2).fill(0);
+  var serviceProviderAddress= new Array(6).fill(0);
   var distances= new Array(6).fill(0);
-  var emails= new Array(6).fill(0);
-  var amounts= new Array(6).fill(0);
+  var name= new Array(6).fill(0);
+  var Wages= new Array(6).fill(0);
   var prices= new Array(6).fill(0);
   var ratings= new Array(6).fill(0);
     //var order_tracker=new Array(100).fill(0);
@@ -28,8 +28,12 @@ var firebaseConfig = {
 
     var btn_id=parseInt(id);
     var sell_id=localStorage.getItem(btn_id);
+    var dstr='d'+parseInt(id);
+    var distnce=localStorage.getItem(dstr);
     localStorage.removeItem("s_id");
     localStorage.setItem("s_id",sell_id);
+    localStorage.removeItem("distance");
+    localStorage.setItem("distance",distnce);
     window.location.href="product_order.html";
   }
     /*
@@ -109,12 +113,12 @@ var firebaseConfig = {
             
            
            
-             buyerAddress[1]=snapshot.child(uid).val().Address;   
-             window.alert(buyerAddress[1]);   
-            sellerAddress[temp]=snapshot.child(product_seller_id).val().Address;
-            window.alert(sellerAddress[temp]);
-            emails[temp]=snapshot.child(product_seller_id).val().EmailAddress;
-             amounts[temp]=snapshot1.child(product_seller_id).child(i).val().Amount;
+             serviceReceiverAddress[1]=snapshot.child(uid).val().Address;   
+             window.alert(serviceReceiverAddress[1]);   
+            serviceProviderAddress[temp]=snapshot.child(product_seller_id).val().Address;
+             window.alert(serviceProviderAddress[temp]);
+             name[temp]=snapshot.child(product_seller_id).val().Name;
+             Wages[temp]=snapshot1.child(product_seller_id).child(i).val().Amount;
             prices[temp]=snapshot1.child(product_seller_id).child(i).val().Price;
             
             sortDistance();
@@ -144,7 +148,7 @@ function sortDistance(){
   var retrieve_distance =firebase.database().ref("Distance_From_center/");
   retrieve_distance.on('value',function(snapshot){
      for(var i=1;i<=5;i++){
-       distances[i]=snapshot.child(sellerAddress[i]).val()+snapshot.child(buyerAddress[1]).val();
+       distances[i]=snapshot.child(serviceProviderAddress[i]).val()+snapshot.child(serviceReceiverAddress[1]).val();
        //window.alert(sellerAddress[i]));
       // window.alert(snapshot.child(buyerAddress[1]).val());
       if(i==5){
@@ -161,16 +165,16 @@ function sort(){
     for(var j=1;j<2;j++){
       if(distances[j]>distances[j+1]){
         var temp=distances[j];
-        var temp2=emails[j];
-        var temp3=amounts[j];
+        var temp2=name[j];
+        var temp3=Wages[j];
         var temp4=prices[j];
         distances[j]=distances[j+1];
-        emails[j]=emails[j+1];
-        amounts[j]=amounts[j+1];
+        name[j]=name[j+1];
+        Wages[j]=Wages[j+1];
         prices[j]=prices[j+1];
         distances[j+1]=temp;
-        emails[j+1]=temp2;
-        amounts[j+1]=temp3;
+        name[j+1]=temp2;
+        Wages[j+1]=temp3;
         prices[j+1]=temp4;
       }
     }if(i==2){
@@ -182,11 +186,15 @@ function set_val(){
   
   for(var i=1;i<=2;i++){
      
-    document.getElementById(i+'seller_email').innerHTML=emails[i];
-    document.getElementById (i+'Available_amount').innerHTML=amounts[i];
+    document.getElementById(i+'seller_email').innerHTML=name[i];
+    document.getElementById (i+'Available_amount').innerHTML=Wages[i];
     document.getElementById(i+'price').innerHTML=prices[i];
     document.getElementById(i+'distance').innerHTML=distances[i];
     document.getElementById(i+'Seller_rating').innerHTML=0;
     //window.alert(amounts[i]);
+    var dstr1='d'+i;
+    localStorage.removeItem(dstr1);
+    localStorage.setItem(dstr1,distances[i]);
+   
   }
 }
