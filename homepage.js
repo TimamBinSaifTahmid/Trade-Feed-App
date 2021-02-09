@@ -33,6 +33,13 @@ var firebaseConfig = {
           
       });
   }
+  function getServiceid(id){
+    //window.alert(id);
+    localStorage.removeItem("Service_id");
+    localStorage.setItem("Service_id",id);
+    
+    //return id;
+  }
 
   function getProductid(id){
     //window.alert(id);

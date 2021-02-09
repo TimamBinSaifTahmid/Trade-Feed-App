@@ -13,7 +13,7 @@ var firebaseConfig = {
   var serviceReceiverAddress= new Array(2).fill(0);
   var serviceProviderAddress= new Array(6).fill(0);
   var distances= new Array(6).fill(0);
-  var name= new Array(6).fill(0);
+  var sellernames= new Array(6).fill(0);
   var Wages= new Array(6).fill(0);
   var prices= new Array(6).fill(0);
   var ratings= new Array(6).fill(0);
@@ -36,45 +36,10 @@ var firebaseConfig = {
     localStorage.setItem("distance",distnce);
     window.location.href="product_order.html";
   }
-    /*
-    //var email_id=document.getElementById(email).value;
-    //window.alert(email);
-    
-    var retrive_seller_id = firebase.database().ref('User_Email_Id/');
-
-    retrive_seller_id.on('value',function(snapshot)
-    {
-      var count1=snapshot.numChildren();
-      //window.alert(count);
-      for( var i=1;i<=count1;i++){
-        var v_email=snapshot.child(i).val().EMAIL;
-        
-        if(v_email==email){
-          //  window.alert(email);
-        var sellerid=snapshot.child(i).val().value;
-        localStorage.removeItem("s_id");
-        localStorage.setItem("s_id",sellerid);
-       /* var reforder=firebase.database().ref('PendingOrder');
-          reforder.once("value")
-  .then(function(snapshot) {
-    var count=snapshot.numChildren()+1;
-    window.alert(count);
-    firebase.database().ref('PendingOrder/'+count).set({
-        orderID : count
-        
-      
-    });/*
-    
-    window.location.href="product_order.html";
-//});
     
 
-    break;
-        }
-      }
-    });
-  }
-  */
+
+  
   function retrive_ProductSeller_Info(){
     //var email_id=document.getElementById(email).value;
     //window.alert(email);
@@ -114,10 +79,11 @@ var firebaseConfig = {
            
            
              serviceReceiverAddress[1]=snapshot.child(uid).val().Address;   
-             window.alert(serviceReceiverAddress[1]);   
+            // window.alert(serviceReceiverAddress[1]);   
             serviceProviderAddress[temp]=snapshot.child(product_seller_id).val().Address;
-             window.alert(serviceProviderAddress[temp]);
-             name[temp]=snapshot.child(product_seller_id).val().Name;
+            // window.alert(serviceProviderAddress[temp]);
+            sellernames[temp]=snapshot.child(product_seller_id).val().Name;
+            window.alert(sellernames[temp]);
              Wages[temp]=snapshot1.child(product_seller_id).child(i).val().Amount;
             prices[temp]=snapshot1.child(product_seller_id).child(i).val().Price;
             
@@ -165,15 +131,15 @@ function sort(){
     for(var j=1;j<2;j++){
       if(distances[j]>distances[j+1]){
         var temp=distances[j];
-        var temp2=name[j];
+        var temp2=sellernames[j];
         var temp3=Wages[j];
         var temp4=prices[j];
         distances[j]=distances[j+1];
-        name[j]=name[j+1];
+        sellernames[j]=sellernames[j+1];
         Wages[j]=Wages[j+1];
         prices[j]=prices[j+1];
         distances[j+1]=temp;
-        name[j+1]=temp2;
+        sellernames[j+1]=temp2;
         Wages[j+1]=temp3;
         prices[j+1]=temp4;
       }
@@ -186,7 +152,7 @@ function set_val(){
   
   for(var i=1;i<=2;i++){
      
-    document.getElementById(i+'seller_email').innerHTML=name[i];
+    document.getElementById(i+'seller_email').innerHTML=sellernames[i];
     document.getElementById (i+'Available_amount').innerHTML=Wages[i];
     document.getElementById(i+'price').innerHTML=prices[i];
     document.getElementById(i+'distance').innerHTML=distances[i];

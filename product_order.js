@@ -25,13 +25,13 @@ function showpopup(){
 
 
 
-
+    var amount;
   function seller_profile(){
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var productid=localStorage.getItem("product_id");
     var oid=parseInt(sid)+parseInt(uid);
-    var amount;
+    
     var price;
     var sold;
     var rating;
@@ -51,10 +51,11 @@ function showpopup(){
               var pdtid=snapshot2.child(i).val().ProductName;
               var pdtname=snapshot4.child(productid).val();
               if(pdtname==pdtid){
-                    window.alert("2nd ifor");
+                   // window.alert("2nd ifor");
                     document.getElementById('username').innerHTML=snapshot.child(sid).val().Name;
                     document.getElementById('useraddress').innerHTML=snapshot.child(sid).val().Address;
                     document.getElementById('useremail').innerHTML=snapshot.child(sid).val().EmailAddress;
+                    amount=snapshot2.child(i).val().Amount;
                     document.getElementById('amount').innerHTML=snapshot2.child(i).val().Amount;
                     document.getElementById('price').innerHTML=snapshot2.child(i).val().Price;
                    document.getElementById('sold').innerHTML=snapshot2.child(i).val().sold;
@@ -72,41 +73,43 @@ function showpopup(){
   }
 
 function orderProduct(){
-    var amount=document.getElementById("amount").value;
-    var productid=localStorage.getItem("product_id");
-   window.alert(productid);
+    var bamount1=document.getElementById("bamount").value;
+   // window.alert(bamount1);
+    var serviceid=localStorage.getItem("Service_id");
+  // window.alert(productid);
 
     var sid=localStorage.getItem("s_id");
     var uid=localStorage.getItem("u_id");
     var distnce=localStorage.getItem("distance");
     var cnt;
     cnt=parseInt(sid)+parseInt(uid);
-    var reforder=firebase.database().ref('PendingOrder/'+cnt);
+    var reforder=firebase.database().ref('PendingDeal/'+cnt);
     reforder.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
  //cnt=parseInt(count);
 
-window.alert(count);
-firebase.database().ref('PendingOrder/'+cnt+'/'+count).set({
+
+var newstr='false';
+window.alert(cnt+' '+newstr+' '+serviceid+' '+sid+' '+uid+' '+distnce+' '+bamount1);
+firebase.database().ref('PendingDeal/'+cnt+'/'+count).set({
   OrderID : cnt,
-  Approval : "false",
-  UserProductId : productid,
+  Approval : newstr,
+  UserProductId : serviceid,
  SellerID: sid,
  BuyerID : uid,
- Distance : distnce,
-  Amount : amount
+ Distance : distnce
 });
 
 });
 
 
-var refpolist=firebase.database().ref('PendingOrderList');
+var refpolist=firebase.database().ref('PendingDealList/'+sid);
     refpolist.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
 
-firebase.database().ref('PendingOrderList/'+count).set(
+firebase.database().ref('PendingDealList/'+sid+'/'+count).set(
  cnt
    
 );
@@ -114,14 +117,14 @@ firebase.database().ref('PendingOrderList/'+count).set(
 });
 
 
-var firesellerOrder=firebase.database().ref('SellerOrder/'+sid);
+var firesellerOrder=firebase.database().ref('ServiceProviderOrder/'+sid);
 firesellerOrder.once("value")
 .then(function(snapshot) {
 var vcount=snapshot.numChildren()+1;
  
 
-window.alert(vcount);
-firebase.database().ref('SellerOrder/'+sid+'/'+vcount).set(
+//window.alert(vcount);
+firebase.database().ref('ServiceProviderOrder/'+sid+'/'+vcount).set(
   cnt
 );
 

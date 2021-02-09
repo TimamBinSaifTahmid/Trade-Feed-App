@@ -1,5 +1,4 @@
-a
-var firebaseConfig = {
+  var firebaseConfig = {
     apiKey: "AIzaSyDoFUdL815RsJYK6aNS9tDle-RnpvHFm8k",
     authDomain: "tradefeed-d399f.firebaseapp.com",
     databaseURL: "https://tradefeed-d399f.firebaseio.com",
@@ -33,6 +32,7 @@ function productRequest(){
     var uid=localStorage.getItem("u_id");
     var order_id= new Array();
     var order_tracker=new Array(100).fill(0);
+    var isOrderTaken=new Array(100).fill(0);
     var b_id;
     //var cnt;
     //window.alert(uid);
@@ -44,9 +44,13 @@ function productRequest(){
           
           for(i=1;i<=cnt;i++){
             const j=i;
+
             //window.alert(j);
             //order_id[j]=snapshot.child('2').val().j;
             order_id[j]=snapshot.child(j).val();
+            if(isOrderTaken[order_id[j]] !=0 ) continue;
+            isOrderTaken[order_id[j]]++;
+
             const tc= ++order_tracker[order_id[j]];
            // window.alert(order_tracker[order_id[j]]);
             var amount,productid,buyerid,p_name;
@@ -55,19 +59,22 @@ function productRequest(){
            {
                v_cnt=snapshot.numChildren();
                //window.alert(v_cnt);
+              var status=snapshot.child(tc).Approval;
+              if(status=='true') continue;
               amount= snapshot.child(tc).val().Amount;
               const amnt=amount;
               productid= snapshot.child(tc).val().UserProductId;
               const p_id=productid;
               buyerid= snapshot.child(tc).val().BuyerID;
               const bid=buyerid;
+
               buyerid_list[++temp]=bid;
               const something=buyerid_list[temp];
               var setBuyerRating=firebase.database().ref('Buyer_rating/');
            setBuyerRating.on('value',function(snapshot)
            {
              
-                window.alert(something);
+                //window.alert(something);
                 var ratting= snapshot.child(something).val().Rate;
                 
                 var str4=j+'rate';
@@ -150,6 +157,31 @@ function productRequest(){
 
         var userid=localStorage.getItem("u_id");
         var oderid=parseInt(userid)+parseInt(buyerid_list[btn_no]);
+        window.alert(btn_no);
+        var pending_order_modify = firebase.database().ref('PendingOrder/'+oderid+'/'+btn_no);
+       pending_order_modify.once("value")
+       .then(function(snapshot2){
+         const str ='true';
+        const amount= snapshot2.val().Amount;
+        const approval= snapshot2.val().Approval;
+        const b_id= snapshot2.val().BuyerID;
+        const distance= snapshot2.val().Distance;
+        const o_id= snapshot2.val().OrderID;
+        const s_id= snapshot2.val().SellerID;
+        const user_Product= snapshot2.val().UserProductId;
+        window.alert(user_Product);
+        firebase.database().ref('PendingOrder/'+oderid+'/'+btn_no).set({
+          Amount:amount,
+          Approval:str,
+          BuyerID:b_id,
+          Distance:distance,
+          OrderID:o_id,
+          SellerID:s_id,
+          UserProductId:user_Product
+        })
+
+        });
+
         var refpendingrate = firebase.database().ref('PendingSellerRating/'+buyerid_list[btn_no]);
         refpendingrate.once("value")
         .then(function(snapshot) {
@@ -222,12 +254,12 @@ var refbuyerrating = firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no
      var buyerrate=snapshot.val().Rate;
      var ratecount=snapshot.val().Count;
      
-   window.alert(ratecount);
-   window.alert(buyerrate);
-   window.alert(rate);
+  // window.alert(ratecount);
+  // window.alert(buyerrate);
+  // window.alert(rate);
     buyerrate=((parseFloat(ratecount)*parseFloat(buyerrate))+parseFloat(rate))/(parseFloat(ratecount)+1);
     ratecount++;
-    window.alert(buyerrate);
+  //  window.alert(buyerrate);
     firebase.database().ref('Buyer_rating/'+buyerid_list[btn_no]).set({
       Rate : buyerrate,
       Count : ratecount

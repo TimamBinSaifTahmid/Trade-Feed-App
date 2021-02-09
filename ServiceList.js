@@ -28,49 +28,19 @@ var firebaseConfig = {
 
     var btn_id=parseInt(id);
     var sell_id=localStorage.getItem(btn_id);
+    var dstr='d'+parseInt(id);
+    var distnce=localStorage.getItem(dstr);
     localStorage.removeItem("s_id");
     localStorage.setItem("s_id",sell_id);
-    window.location.href="product_order.html";
+    localStorage.removeItem("distance");
+    localStorage.setItem("distance",distnce);
+    window.location.href="service_order.html";
   }
-    /*
-    //var email_id=document.getElementById(email).value;
-    //window.alert(email);
-    
-    var retrive_seller_id = firebase.database().ref('User_Email_Id/');
+   
 
-    retrive_seller_id.on('value',function(snapshot)
-    {
-      var count1=snapshot.numChildren();
-      //window.alert(count);
-      for( var i=1;i<=count1;i++){
-        var v_email=snapshot.child(i).val().EMAIL;
-        
-        if(v_email==email){
-          //  window.alert(email);
-        var sellerid=snapshot.child(i).val().value;
-        localStorage.removeItem("s_id");
-        localStorage.setItem("s_id",sellerid);
-       /* var reforder=firebase.database().ref('PendingOrder');
-          reforder.once("value")
-  .then(function(snapshot) {
-    var count=snapshot.numChildren()+1;
-    window.alert(count);
-    firebase.database().ref('PendingOrder/'+count).set({
-        orderID : count
-        
-      
-    });/*
-    
-    window.location.href="product_order.html";
-//});
-    
 
-    break;
-        }
-      }
-    });
-  }
-  */
+
+
   function retrive_ProductSeller_Info(){
     //var email_id=document.getElementById(email).value;
     //window.alert(email);
@@ -188,5 +158,8 @@ function set_val(){
     document.getElementById(i+'distance').innerHTML=distances[i];
     document.getElementById(i+'Seller_rating').innerHTML=0;
     //window.alert(amounts[i]);
+    var dstr1='d'+i;
+    localStorage.removeItem(dstr1);
+    localStorage.setItem(dstr1,distances[i]);
   }
 }
