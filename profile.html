@@ -9,131 +9,412 @@
 	<link rel="stylesheet" href="css/style_add_service.css">
 	<link rel="stylesheet" href="css/HomaPage2Style.css">
 	
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	nav{
+		flex: 1;
+		text-align: right;
+	}
+
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+	.navstyle {
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  background-color: #15237e;
+		position: fixed;
+		width: 100%;
+	}
+
+	li, a, button {
+		font-family: "Poppins", sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		color: white;
+	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 30px 10%;
+	}
+
+	.logo {
+		cursor: pointer;
+		max-width: 200px;
+		margin-left: 50px;
+	}
+
+	.nav_links {
+		list-style: none;
+	}
+
+	.nav_links li {
+		display: inline-block;
+		padding: 0px 20px;
+	}
+
+	.nav_links li a {
+		transition: all 0.3s ease 0s;
+	}
+
+	.nav_links li a:hover {
+		color: #10e97e;
+	}
+
+	.navbutton {
+		padding: 3px 25px;
+		background-color: #10e97e;
+		color: #15237e;
+		border: none;
+		border-radius: 50px;
+		cursor: pointer;
+		transition: all 0.3s ease 0s;    
+	}
+
+
+	.navbutton:hover {
+		background-color: white;
+		color: #001e36;
+	}
+
+	.navmargin {
+		margin-right: 50px;
+		margin-left: 20px;
+	}
+
+
+
+
+    .providerinfo {
+        font-family: "Poppins", sans-serif;
+        margin-left: 100px;
+    }
+
+    .providerinfo {
+        font-family: "Poppins", sans-serif;
+        margin-left: 100px;
+        font-size: 20px;
+    }
+    .profilename {
+        font-family: "Poppins", sans-serif;
+        font-size: 60px;
+        margin-bottom: 50px;
+        margin-top: 150px;
+        color: #15237e;
+
+    }
+
+    .profiledetails {
+        font-family: "Poppins", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+    }
+
+
+    .fullpage-container{
+        padding-left: 200px ;
+        padding-right: 100px;
+    }
+
+
+    .flex-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-left: 200px;
+        padding-right: 200px;
+		padding-top: 100px;
+    }
+
+    .col-1{
+        flex-basis: 50%;
+        min-width: 200px;
+        
+    }
+    .col-2{
+        flex-basis: 50%;
+        min-width: 200px;
+		align-self: flex-end;
+		margin-top: 100px;
+    }
+
+
+        @media (max-width: 1000px) {
+        .col-1, .col-2 {
+            flex: 100%;
+        }
+    }
+
+
+
+
+	
+	.secondheading {
+            font-size: 40px;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+            margin-top: 150px;
+            color: #001e36;
+            
+        }
+
+
+
+		
+        .profilebutton{
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 15px;
+            text-align: center;
+            color: #ffffff;
+            background-color: #001e36;
+            cursor: pointer;
+            width: 200px;
+            font-size: 16px;
+            border-radius: 100px;
+            margin-bottom: 100px;
+            right: 100px;
+            margin-left: 1000px;
+            margin-right: 1000px;
+        }
+
+        .profilebutton:hover {
+            background-color: #15237e;
+        }
+        
+        .card {
+          max-width: 220px;
+          margin: auto;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+        }
+    
+        .title {
+          color: grey;
+          font-size: 18px;
+        }
+    
+        .ServiceDetails {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 15px;
+          color: #10e97e;
+          background-color: #001e36;
+          text-align: left;
+          cursor: pointer;
+          width: 100%;
+          font-size: 16px;
+          border-radius: 10px;
+		  height: 140px;
+        }
+
+		.plusbutton {
+			font-size: 45px;
+			padding-top: 1px;
+			text-align: center;
+		}
+
+		.plusbutton:hover {
+			color: white;
+		}
+
+
+		
+        .lowtext {
+            color: white;
+            font-weight: 400;
+        }
+
+        
+
+        .gridfixes {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+          padding: 50px;
+        }
+    
+        a:link {
+          text-decoration: none;
+        }
+    
+        a {
+          color: white;
+        }
+
+        .gridfixes {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+    
+    .imagefit {
+            
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 200px;
+
+    }
+
+
+</style>
 
 </head>
 <body>
-	<div class="navbar">
-        <a href="HomaPage2.html"><h2>TRADE FEED</h2></a>
-      <nav>
-          <ul>
-              <li><a href="HomePage.html"><h3>SWITCH TO BUYING</h3></a></li>
-			  <li><a href=""><img src="pictures/path 2.png" alt=""></a></li>
-              <li><a href=""><img src="pictures/path 1.png" alt=""></i></a></li>
-              <li><a href="login.html"><img src="pictures/humanicon.png" height="17px" weidth="20px"></i></a></li>
-              
-          </ul>
-      </nav>
 
-    </div>
+    <header class="navstyle">
+        <img class="logo" src="images/logo.svg" alt="logo">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="">Profile</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="login.html">LogOut</a></li>
+                
+            </ul>
+        </nav>
+        <a class="cta navmargin" href="HomePage.html"><button class="navbutton">Switch to Buying</button></a>
+    </header>
 
 
+	
 	<div class="fullpage-container">
 		
-			<div class="profile-container">
-				<div class="row">
-                    <div class="col-2">
-                        <h1 id="username"></h1>
-                        <p>
-                           Name: <span id="useraddress"></span><br>
-                           Email: <span id="useremail"></span><br>
-                           ContactNo: <span id="usercontactno"></span>
-                        </p>
-                    </div>
-                    <div class="col-2">
-                            <img src="pictures/human1.jpg" >
-                    </div>
-					
+		<div>
+			<div class="flex-container">
+				<div class="col-1">
+					<h1 class="profilename" id="username"></h1>
+					<p class="profiledetails">
+						Location: <span id="useraddress"></span><br>
+						Email: <span id="useremail"></span><br>
+						Contact No: <span id="usercontactno"></span>
+
+					</p>
 				</div>
-			</div>
 
-
-			<div class="work-container">
-				<h1>MY SERVICES</h1>		
-				<div class="row-2">
-					<div class="col-5">
-						<div class="small-header">
-							<h3 id="1Service_name"></h3>
-						</div>
-						<div class="small-description">
-							<p>
-								Wage: <span id="1wage"></span><br>
-								Skill: <span id="1skill"></span><br>
-								Experience: <span id="1experience"></span><br>
-								Rate: <span id="1rate"></span><br>
-							</p>
-						</div>
-					</div>
-					<div class="col-5">
-						<div class="small-header">
-							<h3 id="2Service_name"></h3>
-						</div>
-						<div class="small-description">
-							<p>
-								Wage: <span id="2wage"></span><br>
-								Skill: <span id="2skill"></span><br>
-								Experience: <span id="2experience"></span><br>
-								Rate: <span id="2rate"></span><br>
-							</p>
-						</div>
-					</div>	
-					<div class="col-5">
-							<a href="add_service.html"><img src="pictures/blue-plus-icon-6.png"></a>
-					</div>
-					<div class="col-5">
-						<span></span>
-					</div>
-					<div class="col-5">
-						<span></span>
-					</div>
+				<div class="col-2">
+					 <img src="images/tahmid.jpg"  alt="John" class="imagefit">
 				</div>
 				
-				<h1>MY PRODUCTS</h1>		
-				<div class="row-2">
-					<div class="col-5">
-						<div class="small-header">
-							<h3 id="1product_name"></h3>
-						</div>
-						<div class="small-description">
-							<p>
-								Available Amount: <span id="1Amount"></span><br>
-								Price: <span id="1price"></span><br>
-								Sold: <span id="1sold"></span><br>
-								Rate: <span id="1rate"></span><br>
-							</p>
-						</div>
-					</div>
-					<div class="col-5">
-						<div class="small-header">
-							<h3 id="2product_name"></h3>
-						</div>
-						<div class="small-description">
-							<p>
-								Available Amount: <span id="2Amount"></span><br>
-								Price: <span id="2price"></span><br>
-								Sold: <span id="2sold"></span><br>
-								Rate: <span id="2rate"></span><br>
-							</p>
-						</div>
-					</div>	
-					<div class="col-5">
-							<a href="add_product.html"><img src="pictures/blue-plus-icon-6.png"></a>
-					</div>
-					<div class="col-5">
-						<span></span>
-					</div>
-					<div class="col-5">
-						<span></span>
-					</div>
-                </div>
 			</div>
+		</div>
+
+		
 	</div>
 
+	<h1 class="secondheading">MY SERVICES</h1>		
+
+    <div class="grid-container gridfixes">
+
+        <div class="grid-item">
+            <div class="card">
+                <div class = "ServiceDetails">
+					<h3 id="1Service_name"></h3>
+					<h5 class="lowtext">Wage: <span id="1wage"></span><br></h5>
+					<h5 class="lowtext">Skill: <span id="1skill"></span><br></h5>
+					<h5 class="lowtext">Experience: <span id="1experience"></span><br></h5>
+					<h5 class="lowtext">Rate: <span id="1rate"></span><br></h5>
+                </div>
+
+
+            </div>
+          </div>
+
+
+          <div class="grid-item">
+            <div class="card">
+                <div class = "ServiceDetails">
+                    <h3 id="2Service_name"></h3>
+					<h5 class="lowtext">Wage: <span id="2wage"></span><br></h5>
+					<h5 class="lowtext">Skill: <span id="2skill"></span><br></h5>
+					<h5 class="lowtext">Experience: <span id="2experience"></span><br></h5>
+					<h5 class="lowtext">Rate: <span id="2rate"></span><br></h5>
+                </div>
+            </div>
+          </div>
+
+		  <div class="grid-item">
+            <div class="card">
+                <a href="add_service.html">
+					<div class = "ServiceDetails plusbutton">
+						<h1>+</h1>
+                	</div>
+				</a>
+            </div>
+          </div>
+	</div>
+
+
+	<h1 class="secondheading">MY PRODUCTS</h1>		
+
+    <div class="grid-container gridfixes">
+
+        <div class="grid-item">
+            <div class="card">
+                <div class = "ServiceDetails">
+                    <h3 id="1product_name"></h3>
+					<h5 class="lowtext">Available Amount: <span id="1Amount"></span><br></h5>
+					<h5 class="lowtext">Price: <span id="1price"></span><br></h5>
+					<h5 class="lowtext">Sold: <span id="1sold"></span><br></h5>
+					<h5 class="lowtext">Rate: <span id="1rate"></span><br></h5>
+                </div>
+
+
+            </div>
+          </div>
+
+
+          <div class="grid-item">
+            <div class="card">
+                <div class = "ServiceDetails">
+                    <h3 id="2product_name"></h3>
+					<h5 class="lowtext">Available Amount: <span id="2Amount"></span><br></h5>
+					<h5 class="lowtext">Price: <span id="2price"></span><br></h5>
+					<h5 class="lowtext">Sold: <span id="2sold"></span><br></h5>
+					<h5 class="lowtext">Rate: <span id="2rate"></span><br></h5>
+                </div>
+            </div>
+          </div>
+
+		  <div class="grid-item">
+            <div class="card">
+                <a href="add_product.html">
+					<div class = "ServiceDetails plusbutton">
+						<h1>+</h1>
+                	</div>
+				</a>
+            </div>
+          </div>
+	</div>
+
+
+
+
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 	<script src="profile.js"></script>
 
 <script>
@@ -170,3 +451,139 @@
 
 </body>
 </html>
+
+
+
+
+<! DOCTYPE html>
+<html>
+<head>
+	<title>Trade Feed</title>
+	
+    <link rel="stylesheet" href="css/style_profile.css">
+	
+	<link rel="stylesheet" href="css/style_login.css">
+	<link rel="stylesheet" href="css/style_add_service.css">
+	<link rel="stylesheet" href="css/HomaPage2Style.css">
+	
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	nav{
+		flex: 1;
+		text-align: right;
+	}
+
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+	.navstyle {
+	  box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	  padding-top: 12px;
+	  padding-bottom: 12px;
+	  background-color: #15237e;
+		position: fixed;
+		width: 100%;
+	}
+
+	li, a, button {
+		font-family: "Poppins", sans-serif;
+		font-weight: 500;
+		font-size: 16px;
+		color: white;
+	}
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 30px 10%;
+	}
+
+	.logo {
+		cursor: pointer;
+		max-width: 200px;
+		margin-left: 50px;
+	}
+
+	.nav_links {
+		list-style: none;
+	}
+
+	.nav_links li {
+		display: inline-block;
+		padding: 0px 20px;
+	}
+
+	.nav_links li a {
+		transition: all 0.3s ease 0s;
+	}
+
+	.nav_links li a:hover {
+		color: #10e97e;
+	}
+
+	.navbutton {
+		padding: 3px 25px;
+		background-color: #10e97e;
+		color: #15237e;
+		border: none;
+		border-radius: 50px;
+		cursor: pointer;
+		transition: all 0.3s ease 0s;    
+	}
+
+
+	.navbutton:hover {
+		background-color: white;
+		color: #001e36;
+	}
+
+	.navmargin {
+		margin-right: 50px;
+		margin-left: 20px;
+	}
+
+
+
+
+    .providerinfo {
+        font-family: "Poppins", sans-serif;
+        margin-left: 100px;
+    }
+
+    .providerinfo {
+        font-family: "Poppins", sans-serif;
+        margin-left: 100px;
+        font-size: 20px;
+    }
+    .profilename {
+        font-family: "Poppins", sans-serif;
+        font-size: 60px;
+        margin-bottom: 50px;
+        margin-top: 150px;
+        color: #15237e;
+
+    }
+
+    .profiledetails {
+        font-family: "Poppins", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        color: #000;
+    }
+
+
+    
+
+
+	
+
+

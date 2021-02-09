@@ -3,10 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <title>TRADE FEED</title>
-    <link rel="stylesheet" href="HomePageStyle.css">
-    <link rel="stylesheet" href="/css/all.css">
+
+
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav{
+            flex: 1;
+            text-align: right;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
+
+        .navstyle {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          padding-top: 12px;
+          padding-bottom: 12px;
+          background-color: #15237e;
+            position: fixed;
+            width: 100%;
+        }
+
+        li, a, button {
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            color: white;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 10%;
+        }
+
+        .logo {
+            cursor: pointer;
+            max-width: 200px;
+            margin-left: 50px;
+        }
+
+        .nav_links {
+            list-style: none;
+        }
+
+        .nav_links li {
+            display: inline-block;
+            padding: 0px 20px;
+        }
+
+        .nav_links li a {
+            transition: all 0.3s ease 0s;
+        }
+
+        .nav_links li a:hover {
+            color: #10e97e;
+        }
+
+        .navbutton {
+            padding: 3px 25px;
+            background-color: #10e97e;
+            color: #15237e;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;    
+        }
+
+
+        .navbutton:hover {
+            background-color: white;
+            color: #001e36;
+        }
+
+        .navmargin {
+            margin-right: 50px;
+            margin-left: 20px;
+        }
+
+
+
+
+
+        .card {
+          max-width: 220px;
+          margin: auto;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;        
+        }
+    
+        .title {
+          color: grey;
+          font-size: 18px;
+        }
+    
+        button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: #10e97e;
+          background-color: #001e36;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 16px;
+          margin: 4px 2px;
+          border-radius: 10px;
+        }
+    
+        button:hover,
+        a:hover {
+            color: white;
+        }
+    
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+          padding: 50px;
+        }
+    
+        a:link {
+          text-decoration: none;
+        }
+    
+        a {
+          color: white;
+        }
+
+        .gridfixes {
+            margin-left: 200px;
+            margin-right: 200px;
+        }
+
+
+
+        .secondheading {
+            font-size: 40px;
+            text-align: center;
+            font-family: "Poppins", sans-serif;
+            margin-top: 150px;
+            color: #001e36;
+        }
+
+
+        .gaaaap {
+          margin-bottom: 500px;
+          text-align: center;
+        }
+
+        
+    </style>
+
+
+  </head>
 </head>
 <body>
+
+    <header class="navstyle">
+        <img class="logo" src="images/logo.svg" alt="logo">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="">Profile</a></li>
+                <li><a href="">Services</a></li>
+                <li><a href="login.html">LogOut</a></li>
+                
+            </ul>
+        </nav>
+        <a class="cta navmargin" href="HomaPage2.html"><button class="navbutton">Switch to Selling</button></a>
+    </header>
+
+
+<!--
     <div class="navbar">
         <a href="HomePage.html"><h2>TRADE FEED</h2></a>
       <nav>
@@ -20,13 +198,179 @@
       </nav>
 
     </div>
+-->
     
-    <div class="body1">
+
+
+    <div class="landing">
         <h1> GET WHATEVER YOU NEED</h1>
     </div>  
-    <div class="ServiceHead">
+    
+    <div class="secondheading">
         <h2>SERVICES</h2>
     </div>
+
+    <div class="grid-container gridfixes">
+        <div class="grid-item">
+          <div class="card">
+            <img src="images/electrical.png" alt="John" style="width:100%">
+            <p><button>ELECTRICAL</button></p>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <div class="card">
+            <img src="images/house.png" alt="John" style="width:100%">
+            <p><button>HOUSEHOLD</button></p>
+          </div>
+        </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/clean.png"  alt="John" style="width:100%">
+	        <p><button>CLEANING</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+            <div class="card">
+              <img src="images/barbar.png"  alt="John" style="width:100%">
+              <p><button>BARBAR</button></p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <div class="card">
+              <img src="images/hometutor.png"  alt="John" style="width:100%">
+              <a href="Services_List.html" class="ServiceButton5"><p><button>HOME TUTOR</button></p></a>
+            </div>
+          </div>
+	</div>
+
+    <div class="grid-container gridfixes">
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/carpen.png" alt="John" style="width:100%">
+	        <p><button>CARPENTRY</button></p>
+	      </div>
+
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/drive.png" alt="John" style="width:100%">
+	        <p><button>DRIVING</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/rent.png"  alt="John" style="width:100%">
+	        <p><button>RENTAL</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+            <div class="card">
+              <img src="images/service.png"  alt="John" style="width:100%">
+              <p><button>COMMUNITY SERVICE</button></p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <div class="card">
+              <img src="images/sanitery.png"  alt="John" style="width:100%">
+              <p><button>SANITERY</button></p>
+            </div>
+          </div>
+	</div>
+
+    <div class="secondheading">
+        <h2>PRODUCTS</h2>
+    </div>
+
+    <div class="grid-container gridfixes">
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/apple.png" alt="John" style="width:100%">
+	        <p><button>APPLE</button></p>
+	      </div>
+
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/rice.png" alt="John" style="width:100%">
+	        <p><button>RICE</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/milk.png"  alt="John" style="width:100%">
+          <a href="product-list.html" id="203">
+          <p><button>MILK</button></p></a>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+            <div class="card">
+              <img src="images/chili.png"  alt="John" style="width:100%">
+              <p><button>CHILI</button></p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <div class="card">
+              <img src="images/beef.png"  alt="John" style="width:100%">
+              <p><button>BEEF</button></p>
+            </div>
+          </div>
+	</div>
+
+    <div class="grid-container gridfixes">
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/hilsha.png" alt="John" style="width:100%">
+	        <p><button>HILSHA FISH</button></p>
+	      </div>
+
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/potato.png" alt="John" style="width:100%">
+	        <p><button>POTATO</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+	      <div class="card">
+	        <img src="images/koi.png"  alt="John" style="width:100%">
+	        <p><button>KOI FISH</button></p>
+	      </div>
+	    </div>
+
+        <div class="grid-item">
+            <div class="card">
+              <img src="images/ginger.png"  alt="John" style="width:100%">
+              <p><button>GINGER</button></p>
+            </div>
+          </div>
+
+          <div class="grid-item">
+            <div class="card">
+              <img src="images/eggs.png"  alt="John" style="width:100%">
+              <p><button>EGGS</button></p>
+            </div>
+          </div>
+	</div>
+
+  <p class="gaaaap">hi its the end</p>
+
+    
+
+<!--
     <div class="ServicesButton">
         <div class="row1">
             <a href="" class="ServiceButton1">Electrical</a>
@@ -44,27 +388,30 @@
         </div>
 
     </div>
-    <div class="ProductHead">
-        <h2>PRODUCTS</h2>
-    </div>
+
 
     <div class="ProductButton">
         <div class="row1">
-            <a href="" class="ProductButton1" id="201" onclick="getProductid(201)"></a>
-            <a href="" class="ProductButton2" id="202" onclick="getProductid(202)"></a>
+            <a href="" class="ProductButton1 tahmid" id="201" onclick="getProductid(201)"></a>
+            <a href="" class="ProductButton2 tahmid" id="202" onclick="getProductid(202)"></a>
             <a onclick="getProductid(203)" href="product-list.html" class="ProductButton3" id="203" ></a>
-            <a href="" class="ProductButton4" id="204" onclick="getProductid(204)"></a>
-            <a href="" class="ProductButton5" id="205" onclick="getProductid(205)"></a>
+            <a href="" class="ProductButton4 tahmid" id="204" onclick="getProductid(204)"></a>
+            <a href="" class="ProductButton5 tahmid" id="205" onclick="getProductid(205)"></a>
         </div>
         <div class="row2">
-            <a onclick="getProductid()" href="" class="ProductButton6" id="206"></a>
-            <a href="" class="ProductButton7" id="207" onclick="getProductid()"></a>
-            <a href="" class="ProductButton8" id="208" onclick="getProductid()"></a>
-            <a href="" class="ProductButton9" id="209" onclick="getProductid()"></a>
-            <a href="" class="ProductButton10" id="210" onclick="getProductid()"></a>
+            <a onclick="getProductid()" href="" class="ProductButton6 tahmid" id="206"></a>
+            <a href="" class="ProductButton7 tahmid" id="207" onclick="getProductid()"></a>
+            <a href="" class="ProductButton8 tahmid" id="208" onclick="getProductid()"></a>
+            <a href="" class="ProductButton9 tahmid" id="209" onclick="getProductid()"></a>
+            <a href="" class="ProductButton10 tahmid" id="210" onclick="getProductid()"></a>
         </div>
 
     </div>
+
+  -->
+
+
+
 
     <div class="popup">
         <div class="popup_container">
@@ -95,13 +442,13 @@
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
-<script src="homepage.js"></script>
-<script src="index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="homepage.js"></script>
+    <script src="index.js"></script>
 
     <script>
         firebase.auth.onAuthStateChanged(function(user)

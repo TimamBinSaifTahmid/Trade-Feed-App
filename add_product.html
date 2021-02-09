@@ -31,7 +31,7 @@
 					<span id="header"><h1>Product Details</h1></h1></span>
 				</div>
 						
-				<form id="Service-Form" onsubmit="event.preventDefault(); productSellerlist(); addProduct();">
+				<form id="Service-Form" onsubmit="event.preventDefault(); addProduct();">
 					<label for="Product_name">Product name</label><br>
 					<select id="Service_name" onchange="decript();">
 						<option value="Product_name">Select Product name</option>
@@ -49,7 +49,7 @@
 							<input type="text" placeholder="Amount" id="Amount">
 							<input type="text" placeholder="Price" id="Price">
                             <input type="text" placeholder="Additional informations" id="AddInfo">
-							<button type="submit" class="addbtn">Add</button>
+							<button type="submit" class="addbtn" onclick="idgenerator()">Add</button>
 				</form>
 			</div>
 	</div>
