@@ -12,7 +12,7 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 var d;
 function decript(){
-     d=document.getElementById("Service_name");
+     d=document.getElementById("p_name");
     
 }
 
@@ -25,11 +25,11 @@ var refpolist=firebase.database().ref('ProductSellerlist');
 var count=snapshot.numChildren()+1;
 
 for(var i=1;i<count;i++){
-  window.alert("for dhuse");
+ // window.alert("for dhuse");
   var s_id=snapshot.child(i).val();
-  window.alert(s_id);
+//  window.alert(s_id);
   if(s_id==uid){
-    window.alert("if dhukse");
+  //  window.alert("if dhukse");
       flag=true;
       break;
   }
@@ -53,7 +53,7 @@ function addProduct(){
     var Price= document.getElementById("Price").value;
     //var userPassword= document.getElementById("Price").value;
     var AddInfo= document.getElementById("AddInfo").value;
-    window.alert("OK");
+  //  window.alert("OK");
     var ref1 = firebase.database().ref('UserProduct/'+uid);
     ref1.once("value")
   .then(function(snapshot) {

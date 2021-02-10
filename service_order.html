@@ -233,7 +233,6 @@
                 cursor: pointer;
                 font-size: 25px;
             }
-
         </style>
 
 
@@ -261,26 +260,27 @@
             <div>
                 <div class="flex-container">
                     <div class="col-1">
-                        <h1 class="profilename">Timam Bin Saif Tahmid</h1>
+                        <h1 class="profilename" id="name"></h1>
                         <p class="profiledetails">
-                            Location: <span>249 West Nakhalpara, Dhaka</span> <br>
-                            Email: <span>tahmid.guruji@gmail.com</span> <br>
-                            Wage: <span>5000tk-9000tk</span> <br>
-                            Skills: <span>Math,Physics</span><br>
-                            Experience: <span>7</span><br>
-                            Rating: <span>4.8/5</span><br>
+                            Location: <span id="address"></span> <br>
+                            Email: <span id="email"></span> <br>
+                            Wage: <span id="wage"></span> <br>
+                            Skills: <span id="skill"></span><br>
+                            Experience: <span id="Experience"></span><br>
+                            Rating: <span id="rate"></span><br>
                         </p>
                     </div>
 
+
                     <div class="col-2">
-                        <img src="images/tahmid.jpg" alt="John" class="imagefit">
+                        <img src="images/people1.png" alt="John" class="imagefit">
                     </div>
 
                 </div>
             </div>
         </div>
 
-<!--
+        <!--
         <div class="contact-btn">
             <span id="place_order" onclick="showpopup()">CONTACT</span>
         </div>
@@ -295,10 +295,10 @@
         <div>
             <button class="modal-btn">CONTACT</button>
         </div>
-        
+
         <div class="modal-bg ">
             <div class="modal">
-                <p>Contact no: <span>01712136546</span></p>
+                <p>Contact no: <span id="phn_no"></span></p>
                 <button class="btn" onclick="orderService(); closepopup();">Confirm</button>
                 <span class="modal-close">X</span>
             </div>
@@ -317,17 +317,17 @@
             var modalBg = document.querySelector('.modal-bg');
             var modalClose = document.querySelector('.modal-close')
 
-            modalBtn.addEventListener('click',function(){
-            modalBg.classList.add('bg-active');
+            modalBtn.addEventListener('click', function () {
+                modalBg.classList.add('bg-active');
             })
 
-            modalClose.addEventListener('click', function(){
-            modalBg.classList.remove('bg-active');
-})
+            modalClose.addEventListener('click', function () {
+                modalBg.classList.remove('bg-active');
+            })
         </script>
 
 
     </body>
 
 
-</html>
+    </html>

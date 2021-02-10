@@ -1,21 +1,27 @@
 
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+
 .account-page{
-	padding: 200px 500px;
-	/*background-color: rgb(164, 201, 226);*/
+	padding: 200px ;
+	padding-right:58% ;
+	padding-left: 42%;
+	font-family: "Poppins", sans-serif;
 }
 .container-account{
 	
 		/*background-color: rgb(207, 240, 230);*/
+		
 }
 .form-container{
-	background-color: #9df2ef;
-	width: 300px;
-	height: 400px;
+	background-color: white;
+	width: 310px;
+	height: 460px;
 	position: relative;
 	text-align: center;
-	padding: 20px 0;
+	padding: 40px 0;
 	
-	box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+	/* box-shadow: 0 0 20px 0px rgba(0,0,0,0.1); */
 	overflow: hidden;
 }
 .form-btn{
@@ -28,6 +34,7 @@
 #regpage{
 	margin-left: 20px;
 }
+
 .form-container form{
 	max-width: 300px;
 	padding:20px;
@@ -35,13 +42,14 @@
 	top: 130px;
 	transition: transform 1s;
 }
+
 form input{
 	width: 270px;
 	height: 30px;
 	margin-right: 20px;
 	margin-bottom: 10px;
 	padding: 10px;
-	border: 1px solid #ccc;
+	border: 1px solid #15237e;
 }
 form #address{
 	margin-bottom: 10px;
@@ -51,7 +59,7 @@ form .btn{
 	border: none;
 	cursor: pointer;
 	margin-right: 20px;
-	background-color: aqua;
+	background-color: #15237e;
 	font-size: medium;
 	border-radius: 30px;
 }
@@ -68,7 +76,7 @@ form .btn:focus{
 #indicator{
 	width: 50px;
 	border: none;
-	background: brown;
+	background: black;
 	height: 3px;
 	margin-top: 8px;
 	transform: translateX(-70px);

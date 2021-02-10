@@ -50,7 +50,7 @@ function addService(){
     var experience= document.getElementById("experience").value;
     //var userPassword= document.getElementById("Price").value;
     var AddInfo= document.getElementById("AddInfo").value;
-    window.alert(d.value);
+   // window.alert(d.value);
     var refservice = firebase.database().ref('UserService/'+uid);
     refservice.once("value")
   .then(function(snapshot) {
@@ -67,4 +67,4 @@ function addService(){
 
     //console.log(snapshot.numChildren()); 
   });
-}
+} 

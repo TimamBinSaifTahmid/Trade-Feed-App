@@ -120,6 +120,7 @@
           width: 100%;
           font-size: 16px;
           border-radius: 10px;
+          height: 180px;
         }
     
         ServiceDetails:hover,
@@ -131,7 +132,7 @@
             color: white;
             font-weight: 400;
         }
-
+  
         .imagefit {
             
                 width: 220px;
@@ -208,7 +209,7 @@
       </div>
 
       <div class="secondheading">
-          <h2>Home Tutor</h2>
+          <h2>Select a Provider</h2>
       </div>
 
       
@@ -218,12 +219,14 @@
             <div class="card">
                 <a href="service_order.html">
 
-                <img src="images/tahmid.jpg"  alt="John" class="imagefit">
+                <img src="images/people1.png"  alt="John" class="imagefit">
                 <div class = "ServiceDetails">
-                    <h3>Timam Bin Saif</h4>
-                    <h5 class="lowtext">Wages: $50</h5>
-                    <h5 class="lowtext">Rating: 4.5/6</h5>
-                    <h5 class="lowtext righttext">Area: Farmgate</h5>
+
+                    <h3><span id="1provider_Name"></span></h3>
+                    <h5 class="lowtext"></h5>Wages:<span id="1provider_Wages"></span></h5>
+                    <h5 class="lowtext"></h5>Distance:<span id="1distance"></span></h5>
+                    <h5 class="lowtext"></h5>Rating:<span id="1provider_Rating"></span></h5>
+
                 </a>
 
                 </div>
@@ -234,12 +237,12 @@
           <div class="grid-item">
             <div class="card">
                 
-                <img src="images/jisan.png"  alt="John" class="imagefit">
+                <img src="images/people4.png"  alt="John" class="imagefit">
                 <div class = "ServiceDetails">
-                    <h3>Jisan Anam</h4>
-                    <h5 class="lowtext">Wages: $10</h5>
-                    <h5 class="lowtext">Rating: 2.2/6</h5>
-                    <h5 class="lowtext righttext">Area: Mohakhali</h5>
+                    <h3><span id="2provider_Name"></span></h3>
+                    <h5 class="lowtext"></h5>Wages:<span id="2provider_Wages"></span></h5>
+                    <h5 class="lowtext"></h5>Distance:<span id="2distance"></span></h5>
+                    <h5 class="lowtext"></h5>Rating:<span id="2provider_Rating"></span></h5>
                 </div>
             </div>
           </div>
@@ -247,26 +250,12 @@
 
           <div class="grid-item">
             <div class="card">
-                <img src="images/wasi.jpg"  alt="John" class="imagefit">
+                <img src="images/people2.png"  alt="John" class="imagefit">
                 <div class = "ServiceDetails">
-                    <h3>Wasiul Haque</h4>
-                    <h5 class="lowtext">Wages: $500</h5>
-                    <h5 class="lowtext">Rating: 6.5/6</h5>
-                    <h5 class="lowtext righttext">Area: Mirpur</h5>
-                </div>
-            </div>
-          </div>
-
-
-          <div class="grid-item">
-            <div class="card">
-                
-                <img src="images/utsha.jpg"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-                    <h3>Shahriar Ashfaq</h4>
-                    <h5 class="lowtext">Wages: $50</h5>
-                    <h5 class="lowtext">Rating: 5.5/6</h5>
-                    <h5 class="lowtext righttext">Area: Uttara</h5>
+                    <h3><span id="3provider_Name"></span></h3>
+                    <h5 class="lowtext"></h5>Wages:<span id="3provider_Wages"></span></h5>
+                    <h5 class="lowtext"></h5>Distance:<span id="3distance"></span></h5>
+                    <h5 class="lowtext"></h5>Rating:<span id="3provider_Rating"></span></h5>
                 </div>
             </div>
           </div>
@@ -275,12 +264,26 @@
           <div class="grid-item">
             <div class="card">
                 
-                <img src="images/sadman.jpg"  alt="John" class="imagefit">
+                <img src="images/people7.png"  alt="John" class="imagefit">
                 <div class = "ServiceDetails">
-                    <h3>Sadman Saadat</h4>
-                    <h5 class="lowtext">Wages: $70</h5>
-                    <h5 class="lowtext">Rating: 5/6</h5>
-                    <h5 class="lowtext righttext">Area: New Market</h5>
+                    <h3><span id="4provider_Name"></span></h3>
+                    <h5 class="lowtext"></h5>Wages:<span id="4provider_Wages"></span></h5>
+                    <h5 class="lowtext"></h5>Distance:<span id="4distance"></span></h5>
+                    <h5 class="lowtext"></h5>Rating:<span id="4provider_Rating"></span></h5>
+                </div>
+            </div>
+          </div>
+
+
+          <div class="grid-item">
+            <div class="card">
+                
+                <img src="images/people6.png"  alt="John" class="imagefit">
+                <div class = "ServiceDetails">
+                    <h3><span id="5provider_Name"></span></h3>
+                    <h5 class="lowtext"></h5>Wages:<span id="5provider_Wages"></span></h5>
+                    <h5 class="lowtext"></h5>Distance:<span id="5distance"></span></h5>
+                    <h5 class="lowtext"></h5>Rating:<span id="5provider_Rating"></span></h5>
                 </div>
             </div>
           </div>
@@ -426,5 +429,14 @@
         </div>
 
         -->
+
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+        <script src="ServiceList.js"></script>
+
 </body>
 </html>

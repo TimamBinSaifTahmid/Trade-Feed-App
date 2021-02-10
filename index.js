@@ -103,14 +103,15 @@ ref1.once("value")
  });
  firebase.auth().createUserWithEmailAndPassword(emailAddress, password1)
  .then((user) => {
-   window.alert(emailAddress);
+   window.alert('SIGN UP SUCCESSFUL');
+ 
    console.log(user)
  })
  .catch((error) => {
    var errorCode = error.code;
    var errorMessage = error.message;
    // ..
-   window.alert("asds")
+  // window.alert("asds")
    console.log(error)
  });
     console.log(snapshot.numChildren()); 
@@ -131,7 +132,7 @@ function signout(){
   
   const signoutV=firebase.auth().signOut();
   if(signoutV){
-    window.alert("work");
+   // window.alert("work");
     window.location.href="login.html";
   }
 }

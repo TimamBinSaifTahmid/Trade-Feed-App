@@ -1,26 +1,344 @@
 <! DOCTYPE html>
-<html>
-<head>
-	<title>Trade Feed</title>
-	
-    <link rel="stylesheet" href="css/style_profile.css">
-	<link rel="stylesheet" href="css/style_service_order.css">
-	<link rel="stylesheet" href="css/style_login.css">
-	<link rel="stylesheet" href="css/style_add_service.css">
-	<link rel="stylesheet" href="css/HomaPage2Style.css">
-</head>
-<body>
-	<div class="navbar">
-        <a href="HomaPage.html"><h2>TRADE FEED</h2></a>
-      <nav>
-          <ul>
-              <li><a href="HomaPage2.html"><h3>SWITCH TO SELLING</h3></a></li>
-              <li><a href=""><img src="pictures/path 2.png" alt=""></a></li>
-              <li><a href=""><img src="pictures/path 1.png" alt=""></i></a></li>
-              <li><a href="login.html"><img src="pictures/humanicon.png" height="17px" weidth="20px"></i></a></li>
-              
-          </ul>
-      </nav>
+    <html>
+
+    <head>
+        <title>Trade Feed</title>
+
+        <link rel="stylesheet" href="css/style_profile.css">
+        <link rel="stylesheet" href="css/style_service_order.css">
+        <link rel="stylesheet" href="css/style_login.css">
+        <link rel="stylesheet" href="css/style_add_service.css">
+        <link rel="stylesheet" href="css/HomaPage2Style.css">
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            nav {
+                flex: 1;
+                text-align: right;
+            }
+
+
+            .navstyle {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                padding-top: 12px;
+                padding-bottom: 12px;
+                background-color: #15237e;
+                position: fixed;
+                width: 100%;
+            }
+
+            li,
+            a,
+            button {
+                font-family: "Poppins", sans-serif;
+                font-weight: 500;
+                font-size: 16px;
+                color: white;
+            }
+
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 30px 10%;
+            }
+
+            .logo {
+                cursor: pointer;
+                max-width: 200px;
+                margin-left: 50px;
+            }
+
+            .nav_links {
+                list-style: none;
+            }
+
+            .nav_links li {
+                display: inline-block;
+                padding: 0px 20px;
+            }
+
+            .nav_links li a {
+                transition: all 0.3s ease 0s;
+            }
+
+            .nav_links li a:hover {
+                color: #10e97e;
+            }
+
+            .navbutton {
+                padding: 3px 25px;
+                background-color: #10e97e;
+                color: #15237e;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease 0s;
+            }
+
+
+            .navbutton:hover {
+                background-color: white;
+                color: #001e36;
+            }
+
+            .navmargin {
+                margin-right: 50px;
+                margin-left: 20px;
+            }
+
+            .providerinfo {
+                font-family: "Poppins", sans-serif;
+                margin-left: 100px;
+            }
+
+            .providerinfo {
+                font-family: "Poppins", sans-serif;
+                margin-left: 100px;
+                font-size: 20px;
+            }
+
+            .profilename {
+                font-family: "Poppins", sans-serif;
+                font-size: 60px;
+                margin-bottom: 50px;
+                margin-top: 150px;
+                color: #15237e;
+
+            }
+
+            .profiledetails {
+                font-family: "Poppins", sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                color: #000;
+            }
+
+
+            .fullpage-container {
+                padding-left: 200px;
+                padding-right: 100px;
+            }
+
+
+            .flex-container {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                padding-left: 200px;
+                padding-right: 200px;
+                padding-top: 100px;
+            }
+
+            .col-1 {
+                flex-basis: 50%;
+                min-width: 200px;
+
+            }
+
+            .col-2 {
+                flex-basis: 50%;
+                min-width: 200px;
+                position: absolute;
+                right: 0;
+                padding-right: 400px;
+            }
+
+
+            @media (max-width: 1000px) {
+
+                .col-1,
+                .col-2 {
+                    flex: 100%;
+                }
+            }
+
+
+            .imagefit {
+
+                width: 300px;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 200px;
+            }
+
+            .modal-bg {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: visibility 0s, opacity 0.5s;
+            }
+
+            .bg-active {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .modal {
+                position: relative;
+                background-color: white;
+                width: 30%;
+                height: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                font-family: "Poppins", sans-serif;
+                font-size: 25px;
+            }
+
+
+            .modal-close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+
+            .modal-btn {
+                padding: 3px 25px;
+                background-color: #001e36;
+                color: white;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 25px;
+                margin-top: 100px;
+                margin-left: 1000px;
+                margin-right: 1000px;
+            }
+
+            .btn {
+                padding: 3px 5px;
+                background-color: #15237e;
+                color: white;
+                border: none;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 25px;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body>
+
+        <header class="navstyle">
+            <a href="HomePage.html"><img class="logo" src="images/logo.svg" alt="logo"></a>
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="">Profile</a></li>
+                    <li><a href="">Services</a></li>
+                    <li><a href="login.html">LogOut</a></li>
+
+                </ul>
+            </nav>
+            <a class="cta navmargin" href="HomaPage2.html"><button class="navbutton">Switch to Selling</button></a>
+        </header>
+
+
+
+        <div class="fullpage-container">
+
+            <div>
+                <div class="flex-container">
+                    <div class="col-1">
+                        <h1 class="profilename" id="username"></h1>
+                        <p class="profiledetails">
+                            Location : <span id="useraddress"></span><br>
+                            Email : <span id="useremail"></span> <br>
+                            Avaiable Amount : <span id="amount"></span><br>
+                            Price : <span id="price"></span><br>
+                            Sold : <span id="sold"></span><br>
+                            Rating : <span id="rating"></span><br>
+
+                        </p>
+                    </div>
+
+                    <div class="col-2">
+                        <img src="images/people4.png" alt="John" class="imagefit">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div>
+            <button class="modal-btn">CONTACT</button>
+        </div>
+        
+        <div class="modal-bg ">
+            <div class="modal">
+                <p>Contact no: <span id="phn_no"></span></p>
+                <input type="text" placeholder="Enter Amount" id="bamount"></input>
+                <button class="btn" onclick="orderProduct();" >Confirm</button>
+                <span class="modal-close">X</span>
+            </div>
+        </div>
+
+        <!-- <div class="popup">
+            <div class="popup_container">
+                <input type="text" placeholder="Enter Amount" id="amount"></input>
+                <p><br></p>
+                <p>Contact no:<span>01712136546</span></p>
+                <p><br></p>
+                <button class="btn" onclick="orderProduct(); closepopup();">Confirm</button>
+            </div>
+        </div> -->
+
+        
+
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+        <script src="product_order.js"></script>
+
+        <script>
+            var modalBtn = document.querySelector('.modal-btn');
+            var modalBg = document.querySelector('.modal-bg');
+            var modalClose = document.querySelector('.modal-close')
+
+            modalBtn.addEventListener('click',function(){
+            modalBg.classList.add('bg-active');
+            })
+
+            modalClose.addEventListener('click', function(){
+            modalBg.classList.remove('bg-active');
+            })
+        </script>
+
+
+    </body>
+
+
+</html>
+
+
+<!--
+
 
     </div>
 
@@ -66,7 +384,7 @@
             </div>
 			
     </div>
-    
+
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
@@ -78,3 +396,6 @@
 
 </body>
 </html>
+
+
+-->

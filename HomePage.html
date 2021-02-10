@@ -107,7 +107,8 @@
           font-size: 18px;
         }
     
-        button {
+
+        Button {
           border: none;
           outline: 0;
           display: inline-block;
@@ -122,7 +123,28 @@
           border-radius: 10px;
         }
     
-        button:hover,
+        Button:hover,
+        a:hover {
+            color: white;
+        }
+
+
+        .buttonname {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: #10e97e;
+          background-color: #001e36;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 16px;
+          margin: 4px 2px;
+          border-radius: 10px;
+        }
+    
+        .buttonname:hover,
         a:hover {
             color: white;
         }
@@ -158,8 +180,29 @@
 
 
         .gaaaap {
-          margin-bottom: 500px;
+          margin-bottom: 300px;
           text-align: center;
+        }
+
+        .popup {
+          size: 100px ;
+        }
+
+        .form-control {
+          margin-left: 45%;
+          font-size: 18px;
+          text-align: center;
+          padding: 11px;
+
+        }
+
+        .btnalign {
+          font-size: 20px;
+          text-align: center;
+          padding: 2px;
+          width: 150px;
+          margin-bottom: 150px;
+          margin-left: 50%;
         }
 
         
@@ -196,7 +239,6 @@
               
           </ul>
       </nav>
-
     </div>
 -->
     
@@ -214,44 +256,46 @@
         <div class="grid-item">
           <div class="card">
             <img src="images/electrical.png" alt="John" style="width:100%">
-            <p><button>ELECTRICAL</button></p>
+            <a onclick="getServiceid(101)" href="Services_List.html" class="buttonname" id="101"></a>
           </div>
         </div>
 
         <div class="grid-item">
           <div class="card">
             <img src="images/house.png" alt="John" style="width:100%">
-            <p><button>HOUSEHOLD</button></p>
+            <a onclick="getServiceid(102)" href="Services_List.html" class="buttonname" id="102"></a>
           </div>
         </div>
 
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/clean.png"  alt="John" style="width:100%">
-	        <p><button>CLEANING</button></p>
+          <a onclick="getServiceid(103)" href="Services_List.html" class="buttonname" id="103"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
             <div class="card">
               <img src="images/barbar.png"  alt="John" style="width:100%">
-              <p><button>BARBAR</button></p>
+              <a onclick="getServiceid(104)" href="Services_List.html" class="buttonname" id="104"></a>
             </div>
           </div>
 
           <div class="grid-item">
             <div class="card">
               <img src="images/hometutor.png"  alt="John" style="width:100%">
-              <a href="Services_List.html" class="ServiceButton5"><p><button>HOME TUTOR</button></p></a>
+              <a onclick="getServiceid(105)" href="Services_List.html" class="buttonname" id="105"></a>
             </div>
           </div>
 	</div>
+
+  
 
     <div class="grid-container gridfixes">
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/carpen.png" alt="John" style="width:100%">
-	        <p><button>CARPENTRY</button></p>
+          <a onclick="getServiceid(106)" href="Services_List.html" class="buttonname" id="106"></a>
 	      </div>
 
 	    </div>
@@ -259,28 +303,28 @@
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/drive.png" alt="John" style="width:100%">
-	        <p><button>DRIVING</button></p>
+          <a onclick="getServiceid(107)" href="Services_List.html" class="buttonname" id="107"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/rent.png"  alt="John" style="width:100%">
-	        <p><button>RENTAL</button></p>
+          <a onclick="getServiceid(108)" href="Services_List.html" class="buttonname" id="108"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
             <div class="card">
               <img src="images/service.png"  alt="John" style="width:100%">
-              <p><button>COMMUNITY SERVICE</button></p>
+              <a onclick="getServiceid(109)" href="Services_List.html" class="buttonname" id="109"></a>
             </div>
           </div>
 
           <div class="grid-item">
             <div class="card">
               <img src="images/sanitery.png"  alt="John" style="width:100%">
-              <p><button>SANITERY</button></p>
+              <a onclick="getServiceid(110)" href="Services_List.html" class="buttonname" id="110"></a>
             </div>
           </div>
 	</div>
@@ -293,7 +337,7 @@
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/apple.png" alt="John" style="width:100%">
-	        <p><button>APPLE</button></p>
+          <a onclick="getProductid(201)" href="product-list.html" class="buttonname" id="201"></a>
 	      </div>
 
 	    </div>
@@ -301,29 +345,28 @@
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/rice.png" alt="John" style="width:100%">
-	        <p><button>RICE</button></p>
+          <a onclick="getProductid(202)" href="product-list.html" class="buttonname" id="202"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/milk.png"  alt="John" style="width:100%">
-          <a href="product-list.html" id="203">
-          <p><button>MILK</button></p></a>
+          <a onclick="getProductid(203)" href="product-list.html" class="buttonname" id="203"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
             <div class="card">
               <img src="images/chili.png"  alt="John" style="width:100%">
-              <p><button>CHILI</button></p>
+              <a onclick="getProductid(204)" href="product-list.html" class="buttonname" id="204"></a>
             </div>
           </div>
 
           <div class="grid-item">
             <div class="card">
               <img src="images/beef.png"  alt="John" style="width:100%">
-              <p><button>BEEF</button></p>
+              <a onclick="getProductid(205)" href="product-list.html" class="buttonname" id="205"></a>
             </div>
           </div>
 	</div>
@@ -332,7 +375,7 @@
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/hilsha.png" alt="John" style="width:100%">
-	        <p><button>HILSHA FISH</button></p>
+          <a onclick="getProductid(206)" href="product-list.html" class="buttonname" id="206"></a>
 	      </div>
 
 	    </div>
@@ -340,36 +383,36 @@
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/potato.png" alt="John" style="width:100%">
-	        <p><button>POTATO</button></p>
+          <a onclick="getProductid(207)" href="product-list.html" class="buttonname" id="207"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
 	      <div class="card">
 	        <img src="images/koi.png"  alt="John" style="width:100%">
-	        <p><button>KOI FISH</button></p>
+          <a onclick="getProductid(208)" href="product-list.html" class="buttonname" id="208"></a>
 	      </div>
 	    </div>
 
         <div class="grid-item">
             <div class="card">
               <img src="images/ginger.png"  alt="John" style="width:100%">
-              <p><button>GINGER</button></p>
+              <a onclick="getProductid(209)" href="product-list.html" class="buttonname" id="209"></a>
             </div>
           </div>
 
           <div class="grid-item">
             <div class="card">
               <img src="images/eggs.png"  alt="John" style="width:100%">
-              <p><button>EGGS</button></p>
+              <a onclick="getProductid(210)" href="product-list.html" class="buttonname" id="210"></a>
             </div>
           </div>
 	</div>
 
-  <p class="gaaaap">hi its the end</p>
+  <p class="gaaaap"></p>
+
 
     
-
 <!--
     <div class="ServicesButton">
         <div class="row1">
@@ -407,7 +450,6 @@
         </div>
 
     </div>
-
   -->
 
 
@@ -416,28 +458,13 @@
     <div class="popup">
         <div class="popup_container">
             <div>
-                <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate Seller" >
+                <input type="number" id="rating-control" class="form-control" step="0.1" max="5" placeholder="Rate Last Product/Seller" >
             </div>
-            <div class="starouter">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <div class="starinner">
 
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                </div>
-            </div>
             <span id="number_rating">
-
             </span>
             <br>
-            <button class="btn" onclick="rate(); closepopup()">Rate</button>
+            <button class="btn btnalign" onclick="rate(); closepopup()">Rate</button>
         </div>
     </div>
 
@@ -463,3 +490,4 @@
 
 </body>
 </html>
+

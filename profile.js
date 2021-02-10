@@ -26,7 +26,7 @@ function getprofile(){
     firepro.on('value',function(snapshot)
       {
         
-        
+      //   window.alert(snapshot.child(uid).val().Name+''+snapshot.child(uid).val().Address)
           document.getElementById('username').innerHTML=snapshot.child(uid).val().Name;
           document.getElementById('useraddress').innerHTML=snapshot.child(uid).val().Address;
           document.getElementById('useremail').innerHTML=snapshot.child(uid).val().EmailAddress;
@@ -64,7 +64,7 @@ function serviceinfo(){
           var str3=j+'skill';
           var str4=j+'experience';
           var str5=j+'rate';
-          
+         // window.alert(s_name);
           document.getElementById(str1).innerHTML=s_name;
           document.getElementById(str2).innerHTML=wage;
           document.getElementById(str3).innerHTML=skill;
@@ -84,10 +84,13 @@ function productinfo(){
   var addproductinfo= firebase.database().ref('UserProduct/'+userid);
   addproductinfo.on('value',function(snapshot)
       {
+
         var childencnt=snapshot.numChildren();
         if(childencnt>=2){
+          window.alert("hello");
         for(var i=childencnt,j=1;i>childencnt-2;i--,j++){
-          
+        
+
           var p_name=snapshot.child(i).val().ProductName;
           var amount=snapshot.child(i).val().Amount;
           var price=snapshot.child(i).val().Price;
@@ -98,7 +101,6 @@ function productinfo(){
           var str3=j+'price';
           var str4=j+'sold';
           var str5=j+'rate';
-          
           document.getElementById(str1).innerHTML=p_name;
           document.getElementById(str2).innerHTML=amount;
           document.getElementById(str3).innerHTML=price;
@@ -106,6 +108,22 @@ function productinfo(){
           document.getElementById(str5).innerHTML="0";
           
         }
+      }
+      else{var p_name= snapshot.child(1).val().ProductName;
+        var amount=snapshot.child(1).val().Amount;
+        var price=snapshot.child(1).val().Price;
+        var sold=snapshot.child(1).val().sold;
+        var str1=j=1+'product_name';
+        var str2=1+'Amount';
+        var str3=1+'price';
+        var str4=1+'sold';
+        var str5=1+'rate';
+        document.getElementById(str1).innerHTML=p_name;
+        document.getElementById(str2).innerHTML=amount;
+        document.getElementById(str3).innerHTML=price;
+        document.getElementById(str4).innerHTML=sold;
+        document.getElementById(str5).innerHTML="0";
+
       }
       });
 }
