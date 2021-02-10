@@ -89,7 +89,7 @@ function orderService(){
     reforder.once("value")
 .then(function(snapshot) {
 var count=snapshot.numChildren()+1;
- //cnt=parseInt(count);
+//cnt=parseInt(count);
 
 
 var newstr='false';
@@ -123,7 +123,7 @@ var firesellerOrder=firebase.database().ref('ServiceProviderOrder/'+sid);
 firesellerOrder.once("value")
 .then(function(snapshot) {
 var vcount=snapshot.numChildren()+1;
- 
+
 
 //window.alert(vcount);
 firebase.database().ref('ServiceProviderOrder/'+sid+'/'+vcount).set(
