@@ -125,7 +125,7 @@ firebase.database().ref('PendingOrderList/'+sid+'/'+count).set(
       firebase.database().ref('SellerOrder/' + sid + '/' + vcount).set(
         cnt
       );
-
+      window.alert('successful');
     });
 
 }

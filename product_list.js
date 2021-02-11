@@ -48,7 +48,7 @@ function retrive_ProductSeller_Info() {
   var seller_id_list = firebase.database().ref('ProductSellerlist/');
   var retrive_seller_id = firebase.database().ref('User/');
   var retrive_seller_information = firebase.database().ref('UserProduct/');
-  var retrive_Productname = firebase.database().ref("Product/");
+  var retrive_Productname = firebase.database().ref('Product/');
   seller_id_list.on('value', function (snapshot4) {
     retrive_seller_id.on('value', function (snapshot) {
       retrive_seller_information.on('value', function (snapshot1) {
@@ -56,21 +56,25 @@ function retrive_ProductSeller_Info() {
 
 
           var product_Seller_Count = snapshot4.numChildren();
+         
           for (var j = 1; j <= product_Seller_Count; j++) {
 
             var product_seller_id = snapshot4.child(j).val();
             //window.alert(product_seller_id);
-            seller_Product_Count = snapshot1.child(product_seller_id).numChildren();
+           var seller_Product_Count = snapshot1.child(product_seller_id).numChildren();
+           // window.alert(seller_Product_Count +' '+product_seller_id);
             var product_id = localStorage.getItem("product_id");
-            product_Name = snapshot2.child(product_id).val();
+            
+          var product_Name = snapshot2.child(product_id).val();
 
             for (var i = 1; i <= seller_Product_Count; i++) {
-
-              retreived_Product_Name = snapshot1.child(product_seller_id).child(i).val().ProductName;
-              if (retreived_Product_Name == product_Name) {
+                  //   window.alert(product_seller_id +' '+seller_Product_Count);
+            var  product_Name1 = snapshot1.child(product_seller_id).child(i).val().ProductName;
+             // window.alert(product_Name1 +' '+product_Name);
+              if (product_Name1 == product_Name) {
 
                 ++temp;
-                //window.alert(retreived_Product_Name);
+              // window.alert(temp);
 
                 localStorage.removeItem(temp);
                 localStorage.setItem(temp, product_seller_id);
@@ -85,8 +89,8 @@ function retrive_ProductSeller_Info() {
                // window.alert(sellernames[temp]);
                 Wages[temp] = snapshot1.child(product_seller_id).child(i).val().Amount;
                 prices[temp] = snapshot1.child(product_seller_id).child(i).val().Price;
-
-                sortDistance();
+           //   window.alert(serviceProviderAddress[temp]+' '+sellernames[temp]+' '+Wages[temp]+' '+prices[temp]);
+                
 
                 //document.getElementById(temp+'seller_email').innerHTML=snapshot.child(product_seller_id).val().EmailAddress;
                 ///document.getElementById (temp+'Available_amount').innerHTML=snapshot1.child(product_seller_id).child(i).val().Amount;
@@ -95,7 +99,11 @@ function retrive_ProductSeller_Info() {
               }
 
             }
-
+            if(j == product_Seller_Count){
+             // window.alert('kam hosse'+temp);
+              sortDistance(temp);
+              
+          }
           }
 
         });
@@ -108,32 +116,32 @@ function retrive_ProductSeller_Info() {
 
 }
 
-function sortDistance() {
-
+function sortDistance(loopcnt) {
+ // window.alert(loopcnt);
   var retrieve_distance = firebase.database().ref("Distance_From_center/");
   retrieve_distance.on('value', function (snapshot) {
-    for (var k = 1; k <= 5; k++) {
+    for (var k = 1; k <= loopcnt; k++) {
 
       // window.alert(serviceProviderAddress[i]);
       // window.alert(serviceReceiverAddress[1]);
 
-      // if(serviceProviderAddress[k] == serviceReceiverAddress[1]) {
-      //   distances[k] = 0;
-      // }
-      // else {
-      //   distances[k] = snapshot.child(serviceProviderAddress[k]).val() + snapshot.child(serviceReceiverAddress[1]).val();
-      // }
+       if(serviceProviderAddress[k] == serviceReceiverAddress[1]) {
+         distances[k] = 0;
+       }
+       else {
+         distances[k] = snapshot.child(serviceProviderAddress[k]).val() + snapshot.child(serviceReceiverAddress[1]).val();
+       }
 
       distances[k] = snapshot.child(serviceProviderAddress[k]).val() + snapshot.child(serviceReceiverAddress[1]).val();
-
+      
       // window.alert(sellernames[k]);
 
 
 
       //window.alert(sellerAddress[i]));
       // window.alert(snapshot.child(buyerAddress[1]).val());
-      if (k == 5) {
-        sort();
+      if (k == loopcnt) {
+        sort(loopcnt);
         // break;
       }
     }
@@ -144,10 +152,10 @@ function sortDistance() {
 
 
 }
-function sort() {
-
-  for (var i = 1; i <= 5; i++) {
-    for (var j = 1; j < 5; j++) {
+function sort(loopcnt) {
+  //window.alert(loopcnt);
+  for (var i = 1; i <= loopcnt; i++) {
+    for (var j = 1; j < loopcnt; j++) {
       if (distances[j] > distances[j + 1]) {
 
         var temp = distances[j];
@@ -165,14 +173,14 @@ function sort() {
         Wages[j + 1] = temp3;
         prices[j + 1] = temp4;
       }
-    } if (i == 5) {
-      set_val();
+    } if (i == loopcnt) {
+      set_val(loopcnt);
     }
   }
 }
-function set_val() {
-
-  for (var m = 1; m <= 5; m++) {
+function set_val(loopcnt) {
+//window.alert(loopcnt);
+  for (var m = 1; m <= loopcnt; m++) {
 
     document.getElementById(m + 'seller_email').innerHTML = sellernames[m];
     document.getElementById(m + 'Available_amount').innerHTML = Wages[m];
@@ -183,6 +191,8 @@ function set_val() {
     var dstr1 = 'd' + m;
     localStorage.removeItem(dstr1);
     localStorage.setItem(dstr1, distances[m]);
+    if(m==loopcnt)
+      window.alert("Database Successfully loaded");
 
   }
 }

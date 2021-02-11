@@ -1,22 +1,4 @@
 var firebaseConfig = {
-<<<<<<< HEAD
-  apiKey: "AIzaSyDoFUdL815RsJYK6aNS9tDle-RnpvHFm8k",
-  authDomain: "tradefeed-d399f.firebaseapp.com",
-  databaseURL: "https://tradefeed-d399f.firebaseio.com",
-  projectId: "tradefeed-d399f",
-  storageBucket: "tradefeed-d399f.appspot.com",
-  messagingSenderId: "934728586568",
-  appId: "1:934728586568:web:12aad6ec7693bb2e9c4f7d",
-  measurementId: "G-T1S5JDMGMM"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-window.onload = function () {
-  rateSeller();
-  retriveService();
-  retriveProduct();
-=======
     apiKey: "AIzaSyDoFUdL815RsJYK6aNS9tDle-RnpvHFm8k",
     authDomain: "tradefeed-d399f.firebaseapp.com",
     databaseURL: "https://tradefeed-d399f.firebaseio.com",
@@ -32,6 +14,7 @@ window.onload = function () {
   window.onload=function(){
     rateSeller();
     retriveProduct();
+    retriveService();
     
  }
 
@@ -113,7 +96,6 @@ function rateSeller(){
     
         
     });
->>>>>>> 110ad438f28e07312638b2ad9cd7d5b128d3ff3f
 
 }
 
@@ -124,6 +106,7 @@ function retriveService() {
 
   fireRetservice.on('value', function (snapshot) {
     var childCnt = snapshot.numChildren();
+ 
     for (i = 101; i < (101 + childCnt); i++) {
       document.getElementById(i).innerHTML = snapshot.child(i).val();
     }
