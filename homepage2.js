@@ -286,12 +286,13 @@ var cnt;
 var receiverid_list = new Array(100).fill(0);
 var temp = 0;
 function productRequest() {
-  window.alert('dhukse');
+  //window.alert('dhukse');
   var sid = localStorage.getItem("s_id");
   var uid = localStorage.getItem("u_id");
   var order_id = new Array();
   var order_tracker = new Array(100).fill(0);
   var b_id;
+  var counter=0;
   //var cnt;
   //window.alert(uid);
   var fireProductRequestBuyerName = firebase.database().ref('SellerOrder/' + uid);
@@ -315,6 +316,7 @@ function productRequest() {
         if(status_cheaker=='true'){
           tc=tc+100;
         }
+        else counter++;
         //      var st= snapshot.child(tc).val().Approval;
             //  window.alert(st);
             
@@ -334,7 +336,7 @@ function productRequest() {
           //window.alert(something);
           var ratting = snapshot.child(something).val().Rate;
 
-          var str4 = j + 'rate';
+          var str4 = counter + 'rate';
           document.getElementById(str4).innerHTML = "Rating : " + ratting + " /5";
 
 
@@ -350,8 +352,8 @@ function productRequest() {
 
           p_name = snapshot.child(p_id).val();
           //window.alert(p_name);
-          var str1 = j + 'name';
-          var str2 = j + 'amount';
+          var str1 = counter + 'name';
+          var str2 = counter + 'amount';
 
           //var str3=j+'buyer';
           //window.alert(j);
@@ -366,7 +368,7 @@ function productRequest() {
           B_name = snapshot.child(bid).val().Name;
 
 
-          var str3 = j + 'buyer';
+          var str3 = counter + 'buyer';
 
           document.getElementById(str3).innerHTML = "Buyer : " + B_name;
         });

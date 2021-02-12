@@ -45,16 +45,18 @@ function retrive_ProductSeller_Info() {
   //window.alert(email);
   var temp = 0;
   var uid = localStorage.getItem("u_id");
+  var retrive_Seller_rating=firebase.database().ref('Seller_rating/');
   var seller_id_list = firebase.database().ref('ProductSellerlist/');
   var retrive_seller_id = firebase.database().ref('User/');
   var retrive_seller_information = firebase.database().ref('UserProduct/');
   var retrive_Productname = firebase.database().ref('Product/');
+  retrive_Seller_rating.on('value', function (snapshot5){
   seller_id_list.on('value', function (snapshot4) {
     retrive_seller_id.on('value', function (snapshot) {
       retrive_seller_information.on('value', function (snapshot1) {
         retrive_Productname.on('value', function (snapshot2) {
 
-
+         //  window.alert('dhukse');
           var product_Seller_Count = snapshot4.numChildren();
          
           for (var j = 1; j <= product_Seller_Count; j++) {
@@ -89,6 +91,11 @@ function retrive_ProductSeller_Info() {
                // window.alert(sellernames[temp]);
                 Wages[temp] = snapshot1.child(product_seller_id).child(i).val().Amount;
                 prices[temp] = snapshot1.child(product_seller_id).child(i).val().Price;
+              //  window.alert(product_seller_id);
+                if(snapshot5.child(product_seller_id).numChildren()>=1)
+                ratings[temp]=snapshot5.child(product_seller_id).val().Rate;
+                ratings[temp]=ratings[temp].toFixed(3)
+               // window.alert(ratings[temp]);
            //   window.alert(serviceProviderAddress[temp]+' '+sellernames[temp]+' '+Wages[temp]+' '+prices[temp]);
                 
 
@@ -113,7 +120,7 @@ function retrive_ProductSeller_Info() {
     });
 
   });
-
+});
 }
 
 function sortDistance(loopcnt) {
@@ -186,7 +193,7 @@ function set_val(loopcnt) {
     document.getElementById(m + 'Available_amount').innerHTML = Wages[m];
     document.getElementById(m + 'price').innerHTML = prices[m];
     document.getElementById(m + 'distance').innerHTML = distances[m];
-    document.getElementById(m + 'Seller_rating').innerHTML = 0;
+    document.getElementById(m + 'Seller_rating').innerHTML = ratings[m];
     //window.alert(amounts[i]);
     var dstr1 = 'd' + m;
     localStorage.removeItem(dstr1);
