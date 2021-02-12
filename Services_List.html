@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    
+
 
     <title>Document</title>
 
     <style>
-        
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        nav{
+        nav {
             flex: 1;
             text-align: right;
         }
 
-        
+
         .navstyle {
-          box-sizing: border-box;
-          margin: 0;
-          padding: 0;
-          padding-top: 12px;
-          padding-bottom: 12px;
-          background-color: #15237e;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #15237e;
             position: fixed;
             width: 100%;
         }
 
-        li, a, button {
+        li,
+        a,
+        button {
             font-family: "Poppins", sans-serif;
             font-weight: 500;
             font-size: 16px;
@@ -78,7 +80,7 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease 0s;    
+            transition: all 0.3s ease 0s;
         }
 
 
@@ -97,32 +99,32 @@
 
 
         .card {
-          max-width: 220px;
-          margin: auto;
-          text-align: center;
-          font-family: 'Poppins', sans-serif;        
+            max-width: 220px;
+            margin: auto;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
         }
-    
+
         .title {
-          color: grey;
-          font-size: 18px;
+            color: grey;
+            font-size: 18px;
         }
-    
+
         .ServiceDetails {
-          border: none;
-          outline: 0;
-          display: inline-block;
-          padding: 15px;
-          color: #10e97e;
-          background-color: #001e36;
-          text-align: left;
-          cursor: pointer;
-          width: 100%;
-          font-size: 16px;
-          border-radius: 10px;
-          height: 180px;
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 15px;
+            color: #10e97e;
+            background-color: #001e36;
+            text-align: left;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 10px;
+            height: 180px;
         }
-    
+
         ServiceDetails:hover,
         a:hover {
             color: white;
@@ -132,31 +134,31 @@
             color: white;
             font-weight: 400;
         }
-  
+
         .imagefit {
-            
-                width: 220px;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 10px;
+
+            width: 220px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
 
         }
 
 
 
-    
+
         .grid-container {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-          padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            padding: 50px;
         }
-    
+
         a:link {
-          text-decoration: none;
+            text-decoration: none;
         }
-    
+
         a {
-          color: white;
+            color: white;
         }
 
         .gridfixes {
@@ -176,13 +178,13 @@
 
 
         .gaaaap {
-          margin-bottom: 500px;
-          text-align: center;
+            margin-bottom: 500px;
+            text-align: center;
         }
 
-        
-
-        
+        h3 {
+            color: white;
+        }
     </style>
 
 </head>
@@ -197,99 +199,109 @@
                 <li><a href="">Profile</a></li>
                 <li><a href="">Services</a></li>
                 <li><a href="login.html">LogOut</a></li>
-                
+
             </ul>
         </nav>
         <a class="cta navmargin" href="HomaPage2.html"><button class="navbutton">Switch to Selling</button></a>
     </header>
 
 
-      <div class="body1">
-          <h2>SERVICE</h2>
-      </div>
+    <div class="body1">
+        <h2>SERVICE</h2>
+    </div>
 
-      <div class="secondheading">
-          <h2>Select a Provider</h2>
-      </div>
+    <div class="secondheading">
+        <h2>Select a Provider</h2>
+    </div>
 
-      
-      <div class="grid-container gridfixes">
+
+    <div class="grid-container gridfixes">
+
+        <div class="grid-item">
+            <div class="card" onsubmit="event.preventDefault();" onclick="seller_email('1')">
+                <a href="service_order.html">
+
+                    <img src="images/people1.png" alt="John" class="imagefit">
+                    <div class="ServiceDetails" >
+
+                        <h3><span id="1provider_Name"></span></h3>
+                        <h5 class="lowtext"></h5>Wages:<span id="1provider_Wages"></span></h5>
+                        <h5 class="lowtext"></h5>Distance:<span id="1distance"></span></h5>
+                        <h5 class="lowtext"></h5>Rating:<span id="1provider_Rating"></span></h5>
+
+
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="grid-item">
+            <div class="card" onclick="seller_email('2')">
+                <a href="service_order.html">
+
+                    <img src="images/people4.png" alt="John" class="imagefit">
+                    <div class="ServiceDetails" >
+                        <h3><span id="2provider_Name"></span></h3>
+                        <h5 class="lowtext"></h5>Wages:<span id="2provider_Wages"></span></h5>
+                        <h5 class="lowtext"></h5>Distance:<span id="2distance"></span></h5>
+                        <h5 class="lowtext"></h5>Rating:<span id="2provider_Rating"></span></h5>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+
 
         <div class="grid-item">
             <div class="card">
                 <a href="service_order.html">
 
-                <img src="images/people1.png"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-
-                    <h3><span id="1provider_Name"></span></h3>
-                    <h5 class="lowtext"></h5>Wages:<span id="1provider_Wages"></span></h5>
-                    <h5 class="lowtext"></h5>Distance:<span id="1distance"></span></h5>
-                    <h5 class="lowtext"></h5>Rating:<span id="1provider_Rating"></span></h5>
-
+                    <img src="images/people2.png" alt="John" class="imagefit">
+                    <div class="ServiceDetails">
+                        <h3><span id="3provider_Name"></span></h3>
+                        <h5 class="lowtext"></h5>Wages:<span id="3provider_Wages"></span></h5>
+                        <h5 class="lowtext"></h5>Distance:<span id="3distance"></span></h5>
+                        <h5 class="lowtext"></h5>Rating:<span id="3provider_Rating"></span></h5>
+                    </div>
                 </a>
-
-                </div>
             </div>
-          </div>
+        </div>
 
 
-          <div class="grid-item">
+        <div class="grid-item">
             <div class="card">
-                
-                <img src="images/people4.png"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-                    <h3><span id="2provider_Name"></span></h3>
-                    <h5 class="lowtext"></h5>Wages:<span id="2provider_Wages"></span></h5>
-                    <h5 class="lowtext"></h5>Distance:<span id="2distance"></span></h5>
-                    <h5 class="lowtext"></h5>Rating:<span id="2provider_Rating"></span></h5>
-                </div>
+                <a href="service_order.html">
+
+                    <img src="images/people7.png" alt="John" class="imagefit">
+                    <div class="ServiceDetails">
+                        <h3><span id="4provider_Name"></span></h3>
+                        <h5 class="lowtext"></h5>Wages:<span id="4provider_Wages"></span></h5>
+                        <h5 class="lowtext"></h5>Distance:<span id="4distance"></span></h5>
+                        <h5 class="lowtext"></h5>Rating:<span id="4provider_Rating"></span></h5>
+                    </div>
+                </a>
             </div>
-          </div>
+        </div>
 
 
-          <div class="grid-item">
+        <div class="grid-item">
             <div class="card">
-                <img src="images/people2.png"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-                    <h3><span id="3provider_Name"></span></h3>
-                    <h5 class="lowtext"></h5>Wages:<span id="3provider_Wages"></span></h5>
-                    <h5 class="lowtext"></h5>Distance:<span id="3distance"></span></h5>
-                    <h5 class="lowtext"></h5>Rating:<span id="3provider_Rating"></span></h5>
-                </div>
+                <a href="service_order.html">
+
+                    <img src="images/people6.png" alt="John" class="imagefit">
+                    <div class="ServiceDetails">
+                        <h3><span id="5provider_Name"></span></h3>
+                        <h5 class="lowtext"></h5>Wages:<span id="5provider_Wages"></span></h5>
+                        <h5 class="lowtext"></h5>Distance:<span id="5distance"></span></h5>
+                        <h5 class="lowtext"></h5>Rating:<span id="5provider_Rating"></span></h5>
+                    </div>
+                </a>
             </div>
-          </div>
+        </div>
 
 
-          <div class="grid-item">
-            <div class="card">
-                
-                <img src="images/people7.png"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-                    <h3><span id="4provider_Name"></span></h3>
-                    <h5 class="lowtext"></h5>Wages:<span id="4provider_Wages"></span></h5>
-                    <h5 class="lowtext"></h5>Distance:<span id="4distance"></span></h5>
-                    <h5 class="lowtext"></h5>Rating:<span id="4provider_Rating"></span></h5>
-                </div>
-            </div>
-          </div>
-
-
-          <div class="grid-item">
-            <div class="card">
-                
-                <img src="images/people6.png"  alt="John" class="imagefit">
-                <div class = "ServiceDetails">
-                    <h3><span id="5provider_Name"></span></h3>
-                    <h5 class="lowtext"></h5>Wages:<span id="5provider_Wages"></span></h5>
-                    <h5 class="lowtext"></h5>Distance:<span id="5distance"></span></h5>
-                    <h5 class="lowtext"></h5>Rating:<span id="5provider_Rating"></span></h5>
-                </div>
-            </div>
-          </div>
-
-
-	</div>
+    </div>
 
 
 
@@ -430,13 +442,14 @@
 
         -->
 
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
-        <script src="ServiceList.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="ServiceList.js"></script>
 
 </body>
+
 </html>
